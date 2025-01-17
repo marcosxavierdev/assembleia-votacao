@@ -5,7 +5,10 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @ToString
 @Data
@@ -15,6 +18,7 @@ import java.time.LocalDateTime;
 @Document(collection = "Pauta")
 public class Pauta {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime tempoFinal;
     private String assunto;
