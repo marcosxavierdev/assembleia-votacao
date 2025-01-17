@@ -1,2 +1,9 @@
-
-
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      uri: ${MONGO_DB_URI:mongodb+srv://assembleia:assembleiaadmin@assembleiamongodb.qz7jz.mongodb.net/assembleiacollection?retryWrites=true&w=majority&appName=assembleiamongodb}
+      auto-index-creation: true
+server:
+  servlet:
+    context-path: /assembleia/api
