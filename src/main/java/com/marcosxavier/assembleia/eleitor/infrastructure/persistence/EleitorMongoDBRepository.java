@@ -8,6 +8,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface EleitorMongoDBRepository extends MongoRepository<Eleitor, Long> {
+public interface EleitorMongoDBRepository extends MongoRepository<Eleitor, String> {
     Optional<Eleitor> findById(String uuid);
 }

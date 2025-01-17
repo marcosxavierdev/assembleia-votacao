@@ -14,9 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EleitorResponseDTO {
-
     private String id;
-    @NotNull (message ="O campo CPF não pode ser nulo")
     private String cpf;
     private EleitorStatusEnum status;
 

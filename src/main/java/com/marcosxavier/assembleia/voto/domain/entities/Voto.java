@@ -1,5 +1,6 @@
 package com.marcosxavier.assembleia.voto.domain.entities;
 
+import com.marcosxavier.assembleia.voto.domain.dtos.VotoRequestDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,8 +18,15 @@ import java.util.UUID;
 public class Voto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long idPauta;
-    private Long idEleitor;
+    private String id;
+    private String idPauta;
+    private String idEleitor;
     private Boolean aprovacao;
+
+    public Voto(VotoRequestDTO request) {
+        this.id = UUID.randomUUID().toString();
+        this.idPauta = request.getIdPauta();
+        this.idEleitor = request.getIdEleitor();
+        this.aprovacao = request.getAprovacao();
+    }
 }

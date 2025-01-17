@@ -6,15 +6,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Repository
 public interface EleitorRepository {
     Optional<Eleitor> findById(String id);
-
     List<EleitorResponseDTO> findAll();
-
     void delete(Eleitor eleitor);
-
     void save(Eleitor eleitor);
 }

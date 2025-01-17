@@ -27,7 +27,7 @@ public class EleitorRepositoryImpl implements EleitorRepository{
     @Override
     public List<EleitorResponseDTO> findAll() {
         return repository.findAll().stream()
-                .map(EleitorResponseDTO::new) // ajuste conforme necessário
+                .map(EleitorResponseDTO::new)
                 .collect(Collectors.toList());
     }
 
