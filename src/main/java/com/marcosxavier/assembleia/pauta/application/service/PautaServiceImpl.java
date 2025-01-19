@@ -21,13 +21,13 @@ public class PautaServiceImpl implements PautaService{
 
     private final PautaRepository repository;
 
-    public Pauta findById(String id) {
-        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pauta não encontrada!"));
+    public Pauta buscaPautaPorId(String id) {
+        return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pauta não encontrada!"));
     }
 
     @Override
     public PautaResponseDTO buscaPorId(String id) {
-        var pauta = findById(id);
+        var pauta = buscaPautaPorId(id);
         var pautaMapper= new PautaAssembler();
         return pautaMapper.toResponseDTO(pauta);
     }
@@ -35,14 +35,14 @@ public class PautaServiceImpl implements PautaService{
     @Override
     public PautaResponseDTO criaPauta(PautaRequestDTO request) {
         var pauta = new Pauta(request);
-        repository.save(pauta);
+        repository.salva(pauta);
         return new PautaResponseDTO(pauta);
     }
 
     @Override
     public PautaResponseDTO atualizaPauta(PautaUpdateDTO update) {
         log.info(update);
-        Pauta pauta = findById(update.getId());
+        Pauta pauta = buscaPautaPorId(update.getId());
         if (update.getAssunto() != null) {
             pauta.setAssunto(update.getAssunto());
         }
@@ -50,18 +50,18 @@ public class PautaServiceImpl implements PautaService{
             pauta.setTempoMinutos(update.getTempoMinutos());
         }
         log.info(pauta);
-        repository.save(pauta);
+        repository.salva(pauta);
         return new PautaResponseDTO(pauta);
     }
 
     @Override
     public List<PautaResponseDTO> buscaTodasPautas() {
-        return repository.findAll();
+        return repository.buscaLista();
     }
 
     @Override
     public void deletaPauta(String id) {
-        Pauta pauta = findById(id);
-        repository.delete(pauta);
+        Pauta pauta = buscaPautaPorId(id);
+        repository.deleta(pauta);
     }
 }

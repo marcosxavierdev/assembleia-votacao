@@ -19,24 +19,24 @@ public class VotoRepositoryImpl implements VotoRepository{
     private final VotoMongoDBRepository repository;
 
     @Override
-    public Optional<Voto> findById(String id) {
+    public Optional<Voto> buscaPorId(String id) {
         return repository.findById(id);
     }
 
     @Override
-    public List<VotoResponseDTO> findAll() {
+    public List<VotoResponseDTO> buscaLista() {
         return repository.findAll().stream()
                 .map(VotoResponseDTO::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public void delete(Voto voto) {
+    public void deleta(Voto voto) {
         repository.delete(voto);
     }
 
     @Override
-    public void save(Voto voto) {
+    public void salva(Voto voto) {
         repository.save(voto);
     }
 }

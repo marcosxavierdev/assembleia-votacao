@@ -19,27 +19,32 @@ public class EleitorRestController implements EleitorAPI{
     private final EleitorService service;
 
     @Override
-    public EleitorResponseDTO getEleitorById(String id) {
+    public EleitorResponseDTO buscaPorId(String id) {
         return service.buscaPorId(id);
     }
 
     @Override
-    public EleitorResponseDTO createEleitor(@Valid EleitorRequestDTO request) {
+    public EleitorResponseDTO buscaPorCpf(String cpf) {
+        return service.buscaPorCpf(cpf);
+    }
+
+    @Override
+    public EleitorResponseDTO criaEleitor(@Valid EleitorRequestDTO request) {
         return service.criaEleitor(request);
     }
 
     @Override
-    public EleitorResponseDTO updateEleitor(@Valid EleitorUpdateDTO update) {
+    public EleitorResponseDTO atualizaEleitor(@Valid EleitorUpdateDTO update) {
         return service.atualizaEleitor(update);
     }
 
     @Override
-    public List<EleitorResponseDTO> getTodosEleitores() {
+    public List<EleitorResponseDTO> buscaTodosEleitores() {
         return service.buscaTodosEleitores();
     }
 
     @Override
-    public void deleteEleitor(String id) {
+    public void deletaEleitor(String id) {
         service.deletaEleitor(id);
     }
 }

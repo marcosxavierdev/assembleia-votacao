@@ -19,24 +19,24 @@ public class PautaRepositoryImpl implements PautaRepository {
     private final PautaMongoDBRepository repository;
 
     @Override
-    public Optional<Pauta> findById(String id) {
+    public Optional<Pauta> buscaPorId(String id) {
         return repository.findById(id);
     }
 
     @Override
-    public List<PautaResponseDTO> findAll() {
+    public List<PautaResponseDTO> buscaLista() {
         return repository.findAll().stream()
                 .map(PautaResponseDTO::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public void delete(Pauta pauta) {
+    public void deleta(Pauta pauta) {
         repository.delete(pauta);
     }
 
     @Override
-    public void save(Pauta pauta) {
+    public void salva(Pauta pauta) {
         repository.save(pauta);
     }
 }

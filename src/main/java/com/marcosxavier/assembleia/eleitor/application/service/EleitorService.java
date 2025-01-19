@@ -15,4 +15,5 @@ public interface EleitorService {
     EleitorResponseDTO atualizaEleitor(EleitorUpdateDTO update);
     List<EleitorResponseDTO> buscaTodosEleitores();
     void deletaEleitor(String id);
+    EleitorResponseDTO buscaPorCpf(String cpf);
 }

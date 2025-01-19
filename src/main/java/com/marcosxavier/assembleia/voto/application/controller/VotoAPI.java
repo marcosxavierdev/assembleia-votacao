@@ -15,21 +15,21 @@ public interface VotoAPI {
 
     @GetMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    VotoResponseDTO getVotoById(@PathVariable String id);
+    VotoResponseDTO buscaPorId(@PathVariable String id);
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    VotoResponseDTO createVoto (@Valid @RequestBody VotoRequestDTO request);
+    VotoResponseDTO criaVoto (@Valid @RequestBody VotoRequestDTO request);
 
     @PutMapping
     @ResponseStatus(code = HttpStatus.OK)
-    VotoResponseDTO updateVoto(@Valid @RequestBody VotoUpdateDTO update);
+    VotoResponseDTO atualizaVoto(@Valid @RequestBody VotoUpdateDTO update);
 
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    List<VotoResponseDTO> getTodosVotos();
+    List<VotoResponseDTO> buscaTodosVotos();
 
     @DeleteMapping("/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void deleteVoto (@PathVariable String id);
+    void deletaVoto (@PathVariable String id);
 }

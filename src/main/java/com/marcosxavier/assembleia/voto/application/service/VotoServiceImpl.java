@@ -21,13 +21,13 @@ public class VotoServiceImpl implements VotoService {
 
     private final VotoRepository repository;
 
-    public Voto findById(String id) {
-        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Voto não encontrado!"));
+    public Voto buscaVotoPorId(String id) {
+        return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Voto não encontrado!"));
     }
 
     @Override
     public VotoResponseDTO buscaPorId(String id) {
-        var voto = findById(id);
+        var voto = buscaVotoPorId(id);
         var votoMapper= new VotoAssembler();
         return votoMapper.toResponseDTO(voto);
     }
@@ -35,13 +35,13 @@ public class VotoServiceImpl implements VotoService {
     @Override
     public VotoResponseDTO criaVoto(VotoRequestDTO request) {
         var voto = new Voto(request);
-        repository.save(voto);
+        repository.salva(voto);
         return new VotoResponseDTO(voto);
     }
 
     @Override
     public VotoResponseDTO atualizaVoto(VotoUpdateDTO update) {
-        Voto voto = findById(update.getId());
+        Voto voto = buscaVotoPorId(update.getId());
         if (update.getIdPauta() != null) {
             voto.setIdPauta(update.getIdPauta());
         }
@@ -51,18 +51,18 @@ public class VotoServiceImpl implements VotoService {
         if (update.getAprovacao() != null) {
             voto.setAprovacao(update.getAprovacao());
         }
-        repository.save(voto);
+        repository.salva(voto);
         return new VotoResponseDTO(voto);
     }
 
     @Override
     public List<VotoResponseDTO> buscaTodosVotos() {
-        return repository.findAll();
+        return repository.buscaLista();
     }
 
     @Override
     public void deletaVoto(String id) {
-        Voto voto = findById(id);
-        repository.delete(voto);
+        Voto voto = buscaVotoPorId(id);
+        repository.deleta(voto);
     }
 }

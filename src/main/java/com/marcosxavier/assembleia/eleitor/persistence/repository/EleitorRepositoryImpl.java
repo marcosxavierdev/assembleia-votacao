@@ -19,29 +19,34 @@ public class EleitorRepositoryImpl implements EleitorRepository{
     private final EleitorMongoDBRepository repository;
 
     @Override
-    public Optional<Eleitor> findById(String id) {
+    public Optional<Eleitor> buscaPorId(String id) {
         return repository.findById(id);
     }
 
     @Override
-    public List<EleitorResponseDTO> findAll() {
+    public Optional<Eleitor> buscaPorCpf(String cpf) {
+        return repository.findByCpf(cpf);
+    }
+
+    @Override
+    public List<EleitorResponseDTO> buscaLista() {
         return repository.findAll().stream()
                 .map(EleitorResponseDTO::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public void delete(Eleitor eleitor) {
+    public void deleta(Eleitor eleitor) {
         repository.delete(eleitor);
     }
 
     @Override
-    public void save(Eleitor eleitor) {
+    public void salva(Eleitor eleitor) {
         repository.save(eleitor);
     }
 
     @Override
-    public List<Eleitor> findAllByCpf(String cpf) {
+    public List<Eleitor> buscaListaPorCpf(String cpf) {
         return repository.findAll().stream()
                 .filter(eleitor -> eleitor.getCpf().equals(cpf))
                 .map(Eleitor::new)

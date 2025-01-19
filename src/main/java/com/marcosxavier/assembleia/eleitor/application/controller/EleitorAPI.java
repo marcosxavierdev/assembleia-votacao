@@ -17,21 +17,25 @@ public interface EleitorAPI {
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.OK)
-    EleitorResponseDTO getEleitorById(@PathVariable String id);
+    EleitorResponseDTO buscaPorId(@PathVariable String id);
+
+    @GetMapping(value = "/byCPF/{cpf}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    EleitorResponseDTO buscaPorCpf(@PathVariable String cpf);
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    EleitorResponseDTO createEleitor (@Valid @RequestBody EleitorRequestDTO request);
+    EleitorResponseDTO criaEleitor (@Valid @RequestBody EleitorRequestDTO request);
 
     @PutMapping
     @ResponseStatus(code = HttpStatus.OK)
-    EleitorResponseDTO updateEleitor(@Valid @RequestBody EleitorUpdateDTO update);
+    EleitorResponseDTO atualizaEleitor(@Valid @RequestBody EleitorUpdateDTO update);
 
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    List<EleitorResponseDTO> getTodosEleitores();
+    List<EleitorResponseDTO> buscaTodosEleitores();
 
     @DeleteMapping("/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void deleteEleitor (@PathVariable String id);
+    void deletaEleitor (@PathVariable String id);
 }

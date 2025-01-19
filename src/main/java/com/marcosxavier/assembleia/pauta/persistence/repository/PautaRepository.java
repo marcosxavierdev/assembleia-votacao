@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public interface PautaRepository {
 
-    Optional<Pauta> findById(String id);
-    List<PautaResponseDTO> findAll();
-    void delete(Pauta pauta);
-    void save(Pauta pauta);
+    Optional<Pauta> buscaPorId(String id);
+    List<PautaResponseDTO> buscaLista();
+    void deleta(Pauta pauta);
+    void salva(Pauta pauta);
 }

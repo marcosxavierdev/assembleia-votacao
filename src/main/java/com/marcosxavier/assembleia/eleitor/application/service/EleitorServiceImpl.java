@@ -16,6 +16,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+import static java.util.Objects.isNull;
+
 @Service
 @Log4j2
 @RequiredArgsConstructor
@@ -23,61 +25,73 @@ public class EleitorServiceImpl implements EleitorService{
 
     private final EleitorRepository repository;
 
-    public Eleitor findById(String id) {
-        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Eleitor não encontrado!"));
+    public Eleitor buscaEleitorPorId(String id) {
+        return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Eleitor não encontrado!"));
+    }
+
+    public Eleitor buscaEleitorPorCpf(String cpf) {
+        return repository.buscaPorCpf(cpf).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Eleitor não encontrado!"));
     }
 
     @Override
     public List<EleitorResponseDTO> buscaTodosEleitores() {
-        return repository.findAll();
+        return repository.buscaLista();
     }
 
     @Override
     public void deletaEleitor(String id) {
-        Eleitor eleitor = findById(id);
-        repository.delete(eleitor);
+        Eleitor eleitor = buscaEleitorPorId(id);
+        repository.deleta(eleitor);
     }
 
     @Override
     public EleitorResponseDTO buscaPorId(String id) {
-        var eleitor = findById(id);
+        var eleitor = buscaEleitorPorId(id);
+        var eleitorMapper= new EleitorAssembler();
+        return eleitorMapper.toResponseDTO(eleitor);
+    }
+
+    @Override
+    public EleitorResponseDTO buscaPorCpf(String cpf) {
+        var eleitor = buscaEleitorPorCpf(cpf);
         var eleitorMapper= new EleitorAssembler();
         return eleitorMapper.toResponseDTO(eleitor);
     }
 
     @Override
     public EleitorResponseDTO criaEleitor(EleitorRequestDTO request) {
-        var eleitor = validaEleitor(request);
-        repository.save(eleitor);
+        validaEleitor(request.getCpf());
+        var eleitor = new Eleitor(request);
+        eleitor.setStatus(EleitorStatusEnum.ABLE_TO_VOTE);
+        repository.salva(eleitor);
         return new EleitorResponseDTO(eleitor);
     }
 
     @Override
     public EleitorResponseDTO atualizaEleitor(EleitorUpdateDTO update) {
-        Eleitor eleitor = findById(update.getId());
+        validaEleitor(update.getCpf());
+        Eleitor eleitor = buscaEleitorPorId(update.getId());
+        if (update.getId() != null) {
+            eleitor.setId(update.getId());
+        }
         if (update.getCpf() != null) {
             eleitor.setCpf(update.getCpf());
         }
         if (update.getStatus() != null) {
             eleitor.setStatus(update.getStatus());
         }
-        repository.save(eleitor);
+        repository.salva(eleitor);
         return new EleitorResponseDTO(eleitor);
     }
 
-    private Eleitor validaEleitor(EleitorRequestDTO request) {
+    private void validaEleitor(String cpf) {
 
-        var eleitor = new Eleitor(request);
-        if (!ValidadorCPF.cpfValido(request.getCpf())) {
-            eleitor.setStatus(EleitorStatusEnum.UNABLE_TO_VOTE);
-            return  eleitor;
+        if (!ValidadorCPF.cpfValido(cpf)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "UNABLE_TO_VOTE: CPF inválido");
         }
 
-        if (!repository.findAllByCpf(request.getCpf()).isEmpty()) {
-            eleitor.setStatus(EleitorStatusEnum.UNABLE_TO_VOTE);
-            return  eleitor;
+        if (!repository.buscaListaPorCpf(cpf).isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "UNABLE_TO_VOTE: CPF já registrado");
         }
-        eleitor.setStatus(EleitorStatusEnum.ABLE_TO_VOTE);
-        return eleitor;
     }
 }

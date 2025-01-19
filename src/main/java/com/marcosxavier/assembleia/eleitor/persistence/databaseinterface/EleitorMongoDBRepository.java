@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface EleitorMongoDBRepository extends MongoRepository<Eleitor, String> {
 
     Optional<Eleitor> findById(String uuid);
-    List<Eleitor> findAllByCpf(String cpf);
+    Optional<Eleitor> findByCpf(String cpf);
 }

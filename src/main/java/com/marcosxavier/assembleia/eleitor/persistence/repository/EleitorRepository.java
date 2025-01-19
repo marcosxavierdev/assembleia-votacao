@@ -10,10 +10,10 @@ import java.util.Optional;
 @Repository
 public interface EleitorRepository {
 
-    Optional<Eleitor> findById(String id);
-    List<EleitorResponseDTO> findAll();
-    void delete(Eleitor eleitor);
-    void save(Eleitor eleitor);
-
-    List<Eleitor> findAllByCpf(String cpf);
+    Optional<Eleitor> buscaPorId(String id);
+    List<EleitorResponseDTO> buscaLista();
+    void deleta(Eleitor eleitor);
+    void salva(Eleitor eleitor);
+    List<Eleitor> buscaListaPorCpf(String cpf);
+    Optional<Eleitor> buscaPorCpf(String cpf);
 }

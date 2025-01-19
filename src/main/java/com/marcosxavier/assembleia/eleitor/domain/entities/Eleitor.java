@@ -1,6 +1,7 @@
 package com.marcosxavier.assembleia.eleitor.domain.entities;
 
 import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorRequestDTO;
+import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorUpdateDTO;
 import com.marcosxavier.assembleia.eleitor.enums.EleitorStatusEnum;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -14,7 +15,7 @@ import java.util.UUID;
 @ToString
 @Data
 @Builder
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor()
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Document(collection = "Eleitor")
 public class Eleitor {
@@ -29,6 +30,12 @@ public class Eleitor {
         this.id = UUID.randomUUID().toString();
         this.cpf = request.getCpf();
         this.status = request.getStatus();
+    }
+
+    public Eleitor(EleitorUpdateDTO update) {
+        this.id = update.getId();
+        this.cpf = update.getCpf();
+        this.status = update.getStatus();
     }
 
     public Eleitor(Eleitor eleitor) {

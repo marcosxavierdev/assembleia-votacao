@@ -15,21 +15,21 @@ public interface PautaAPI {
 
     @GetMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    PautaResponseDTO getPautaById(@PathVariable String id);
+    PautaResponseDTO buscaPorId(@PathVariable String id);
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    PautaResponseDTO createPauta (@Valid @RequestBody PautaRequestDTO request);
+    PautaResponseDTO criaPauta (@Valid @RequestBody PautaRequestDTO request);
 
     @PutMapping
     @ResponseStatus(code = HttpStatus.OK)
-    PautaResponseDTO updatePauta(@Valid @RequestBody PautaUpdateDTO update);
+    PautaResponseDTO atualizaPauta(@Valid @RequestBody PautaUpdateDTO update);
 
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    List<PautaResponseDTO> getTodasPautas();
+    List<PautaResponseDTO> buscaTodasPautas();
 
     @DeleteMapping("/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void deletePauta (@PathVariable String id);
+    void deletaPauta (@PathVariable String id);
 }

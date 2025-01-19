@@ -18,27 +18,27 @@ public class PautaRestController implements PautaAPI {
     private final PautaService service;
 
     @Override
-    public PautaResponseDTO getPautaById(String id) {
+    public PautaResponseDTO buscaPorId(String id) {
         return service.buscaPorId(id);
     }
 
     @Override
-    public PautaResponseDTO createPauta(PautaRequestDTO request) {
+    public PautaResponseDTO criaPauta(PautaRequestDTO request) {
         return service.criaPauta(request);
     }
 
     @Override
-    public PautaResponseDTO updatePauta(PautaUpdateDTO update) {
+    public PautaResponseDTO atualizaPauta(PautaUpdateDTO update) {
         return service.atualizaPauta(update);
     }
 
     @Override
-    public List<PautaResponseDTO> getTodasPautas() {
+    public List<PautaResponseDTO> buscaTodasPautas() {
         return service.buscaTodasPautas();
     }
 
     @Override
-    public void deletePauta(String id) {
+    public void deletaPauta(String id) {
         service.deletaPauta(id);
     }
 }

@@ -79,7 +79,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleException(Exception e, HttpServletRequest request) {
         ErrorResponse response = ErrorResponse.builder()
                 .timestamp(LocalDateTime.now())
-                .message("Erro inesperado")
+                .message(e.getMessage())
                 .error(HttpStatus.INTERNAL_SERVER_ERROR.toString())
                 .path(request.getRequestURI())
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
