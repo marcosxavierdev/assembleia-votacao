@@ -1,6 +1,7 @@
 package com.marcosxavier.assembleia.eleitor.service;
 
 import com.marcosxavier.assembleia.eleitor.assembler.EleitorAssembler;
+import com.marcosxavier.assembleia.eleitor.assembler.EleitorMapper;
 import com.marcosxavier.assembleia.eleitor.dtos.EleitorRequestDTO;
 import com.marcosxavier.assembleia.eleitor.dtos.EleitorResponseDTO;
 import com.marcosxavier.assembleia.eleitor.dtos.EleitorUpdateDTO;
@@ -50,8 +51,7 @@ public class EleitorServiceImpl implements EleitorService{
     @Override
     public EleitorResponseDTO buscaPorId(String id) {
         var eleitor = buscaEleitorPorId(id);
-        var eleitorMapper= new EleitorAssembler();
-        return eleitorMapper.toResponseDTO(eleitor);
+        return EleitorMapper.INSTANCE.toEleitorResponseDTO(eleitor);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.marcosxavier.assembleia.pauta.service;
 
 import com.marcosxavier.assembleia.pauta.assembler.PautaAssembler;
+import com.marcosxavier.assembleia.pauta.assembler.PautaMapper;
 import com.marcosxavier.assembleia.pauta.dtos.PautaRequestDTO;
 import com.marcosxavier.assembleia.pauta.dtos.PautaResponseDTO;
 import com.marcosxavier.assembleia.pauta.dtos.PautaUpdateDTO;
@@ -36,15 +37,13 @@ public class PautaServiceImpl implements PautaService{
         var pauta = buscaPautaPorId(id);
         pauta.setStatus(PautaStatusEnum.CLOSED);
         repository.salva(pauta);
-        var pautaMapper= new PautaAssembler();
-        return pautaMapper.toResponseDTO(pauta);
+        return PautaMapper.INSTANCE.toPautaResponseDTO(pauta);
     }
 
     @Override
     public PautaResponseDTO buscaPorId(String id) {
         var pauta = buscaPautaPorId(id);
-        var pautaMapper= new PautaAssembler();
-        return pautaMapper.toResponseDTO(pauta);
+        return PautaMapper.INSTANCE.toPautaResponseDTO(pauta);
     }
 
     @Override

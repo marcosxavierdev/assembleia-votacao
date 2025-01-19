@@ -6,6 +6,7 @@ import com.marcosxavier.assembleia.pauta.service.PautaService;
 import com.marcosxavier.assembleia.pauta.entities.Pauta;
 import com.marcosxavier.assembleia.pauta.enums.PautaStatusEnum;
 import com.marcosxavier.assembleia.voto.assembler.VotoAssembler;
+import com.marcosxavier.assembleia.voto.assembler.VotoMapper;
 import com.marcosxavier.assembleia.voto.dtos.VotoRequestDTO;
 import com.marcosxavier.assembleia.voto.dtos.VotoResponseDTO;
 import com.marcosxavier.assembleia.voto.dtos.VotoUpdateDTO;
@@ -35,8 +36,7 @@ public class VotoServiceImpl implements VotoService {
     @Override
     public VotoResponseDTO buscaPorId(String id) {
         var voto = buscaVotoPorId(id);
-        var votoMapper= new VotoAssembler();
-        return votoMapper.toResponseDTO(voto);
+        return VotoMapper.INSTANCE.toVotoResponseDTO(voto);
     }
 
     @Override
