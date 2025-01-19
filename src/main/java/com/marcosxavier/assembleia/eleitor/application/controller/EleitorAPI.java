@@ -6,6 +6,7 @@ import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorUpdateDTO;
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 @RequestMapping(value="/public/v1/eleitor")
 public interface EleitorAPI {
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.OK)
     EleitorResponseDTO getEleitorById(@PathVariable String id);
 

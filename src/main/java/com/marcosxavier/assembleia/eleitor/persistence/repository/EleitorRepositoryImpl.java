@@ -39,4 +39,12 @@ public class EleitorRepositoryImpl implements EleitorRepository{
     public void save(Eleitor eleitor) {
         repository.save(eleitor);
     }
+
+    @Override
+    public List<Eleitor> findAllByCpf(String cpf) {
+        return repository.findAll().stream()
+                .filter(eleitor -> eleitor.getCpf().equals(cpf))
+                .map(Eleitor::new)
+                .collect(Collectors.toList());
+    }
 }

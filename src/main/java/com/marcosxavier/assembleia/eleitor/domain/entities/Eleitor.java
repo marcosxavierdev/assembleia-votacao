@@ -30,4 +30,10 @@ public class Eleitor {
         this.cpf = request.getCpf();
         this.status = request.getStatus();
     }
+
+    public Eleitor(Eleitor eleitor) {
+        this.id = eleitor.getId();
+        this.cpf = eleitor.getCpf();
+        this.status = eleitor.getStatus();
+    }
 }

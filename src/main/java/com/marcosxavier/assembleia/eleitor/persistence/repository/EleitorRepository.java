@@ -14,4 +14,6 @@ public interface EleitorRepository {
     List<EleitorResponseDTO> findAll();
     void delete(Eleitor eleitor);
     void save(Eleitor eleitor);
+
+    List<Eleitor> findAllByCpf(String cpf);
 }

@@ -41,7 +41,6 @@ public class VotoServiceImpl implements VotoService {
 
     @Override
     public VotoResponseDTO atualizaVoto(VotoUpdateDTO update) {
-        log.info("in"+update);
         Voto voto = findById(update.getId());
         if (update.getIdPauta() != null) {
             voto.setIdPauta(update.getIdPauta());
@@ -52,7 +51,6 @@ public class VotoServiceImpl implements VotoService {
         if (update.getAprovacao() != null) {
             voto.setAprovacao(update.getAprovacao());
         }
-        log.info("ou"+voto);
         repository.save(voto);
         return new VotoResponseDTO(voto);
     }
