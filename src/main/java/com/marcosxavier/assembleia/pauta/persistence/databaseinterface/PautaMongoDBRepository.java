@@ -1,6 +1,6 @@
 package com.marcosxavier.assembleia.pauta.persistence.databaseinterface;
 
-import com.marcosxavier.assembleia.pauta.domain.entities.Pauta;
+import com.marcosxavier.assembleia.pauta.entities.Pauta;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;

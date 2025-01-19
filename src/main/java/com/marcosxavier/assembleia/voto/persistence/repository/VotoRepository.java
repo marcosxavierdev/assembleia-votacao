@@ -1,7 +1,7 @@
 package com.marcosxavier.assembleia.voto.persistence.repository;
 
-import com.marcosxavier.assembleia.voto.domain.dtos.VotoResponseDTO;
-import com.marcosxavier.assembleia.voto.domain.entities.Voto;
+import com.marcosxavier.assembleia.voto.dtos.VotoResponseDTO;
+import com.marcosxavier.assembleia.voto.entities.Voto;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

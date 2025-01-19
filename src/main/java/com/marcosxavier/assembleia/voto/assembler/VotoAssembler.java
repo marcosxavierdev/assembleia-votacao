@@ -1,7 +1,7 @@
 package com.marcosxavier.assembleia.voto.assembler;
 
-import com.marcosxavier.assembleia.voto.domain.dtos.VotoResponseDTO;
-import com.marcosxavier.assembleia.voto.domain.entities.Voto;
+import com.marcosxavier.assembleia.voto.dtos.VotoResponseDTO;
+import com.marcosxavier.assembleia.voto.entities.Voto;
 
 public class VotoAssembler {
 

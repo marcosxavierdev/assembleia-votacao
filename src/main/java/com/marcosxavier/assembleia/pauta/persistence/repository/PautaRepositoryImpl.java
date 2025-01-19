@@ -1,7 +1,7 @@
 package com.marcosxavier.assembleia.pauta.persistence.repository;
 
-import com.marcosxavier.assembleia.pauta.domain.dtos.PautaResponseDTO;
-import com.marcosxavier.assembleia.pauta.domain.entities.Pauta;
+import com.marcosxavier.assembleia.pauta.dtos.PautaResponseDTO;
+import com.marcosxavier.assembleia.pauta.entities.Pauta;
 import com.marcosxavier.assembleia.pauta.persistence.databaseinterface.PautaMongoDBRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

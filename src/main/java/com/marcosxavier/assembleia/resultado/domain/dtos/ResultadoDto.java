@@ -1,6 +1,6 @@
 package com.marcosxavier.assembleia.resultado.domain.dtos;
 
-import com.marcosxavier.assembleia.pauta.domain.dtos.PautaResponseDTO;
+import com.marcosxavier.assembleia.pauta.dtos.PautaResponseDTO;
 import com.marcosxavier.assembleia.resultado.enums.ResultadoStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;

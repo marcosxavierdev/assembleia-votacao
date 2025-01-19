@@ -1,7 +1,7 @@
 package com.marcosxavier.assembleia.pauta.assembler;
 
-import com.marcosxavier.assembleia.pauta.domain.dtos.PautaResponseDTO;
-import com.marcosxavier.assembleia.pauta.domain.entities.Pauta;
+import com.marcosxavier.assembleia.pauta.dtos.PautaResponseDTO;
+import com.marcosxavier.assembleia.pauta.entities.Pauta;
 
 public class PautaAssembler {
 

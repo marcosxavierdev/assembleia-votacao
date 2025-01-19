@@ -1,6 +1,6 @@
 package com.marcosxavier.assembleia.voto.persistence.databaseinterface;
 
-import com.marcosxavier.assembleia.voto.domain.entities.Voto;
+import com.marcosxavier.assembleia.voto.entities.Voto;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
