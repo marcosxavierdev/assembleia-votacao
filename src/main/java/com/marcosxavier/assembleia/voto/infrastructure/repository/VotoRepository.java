@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface VotoRepository {
+
     Optional<Voto> findById(String id);
     List<VotoResponseDTO> findAll();
     void delete(Voto voto);

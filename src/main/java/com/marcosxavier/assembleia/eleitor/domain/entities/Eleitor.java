@@ -18,6 +18,7 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Document(collection = "Eleitor")
 public class Eleitor {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;

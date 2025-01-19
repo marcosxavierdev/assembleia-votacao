@@ -1,10 +1,6 @@
 package com.marcosxavier.assembleia.voto.application.service;
 
-import com.marcosxavier.assembleia.assembler.EleitorAssembler;
 import com.marcosxavier.assembleia.assembler.VotoAssembler;
-import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorResponseDTO;
-import com.marcosxavier.assembleia.eleitor.domain.entities.Eleitor;
-import com.marcosxavier.assembleia.eleitor.infrastructure.repository.EleitorRepository;
 import com.marcosxavier.assembleia.voto.domain.dtos.VotoRequestDTO;
 import com.marcosxavier.assembleia.voto.domain.dtos.VotoResponseDTO;
 import com.marcosxavier.assembleia.voto.domain.dtos.VotoUpdateDTO;
@@ -45,6 +41,7 @@ public class VotoServiceImpl implements VotoService {
 
     @Override
     public VotoResponseDTO atualizaVoto(VotoUpdateDTO update) {
+        log.info("in"+update);
         Voto voto = findById(update.getId());
         if (update.getIdPauta() != null) {
             voto.setIdPauta(update.getIdPauta());
@@ -55,6 +52,7 @@ public class VotoServiceImpl implements VotoService {
         if (update.getAprovacao() != null) {
             voto.setAprovacao(update.getAprovacao());
         }
+        log.info("ou"+voto);
         repository.save(voto);
         return new VotoResponseDTO(voto);
     }

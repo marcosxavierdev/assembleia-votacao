@@ -1,13 +1,25 @@
 package com.marcosxavier.assembleia.pauta.domain.dtos;
 
 import com.marcosxavier.assembleia.enums.PautaStatusEnum;
-import lombok.Value;
-import java.time.LocalDateTime;
+import com.marcosxavier.assembleia.pauta.domain.entities.Pauta;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PautaResponseDTO {
-    Long id;
-    LocalDateTime tempoFinal;
+
+    String id;
+    String tempoMinutos;
     String assunto;
     PautaStatusEnum status;
+
+    public PautaResponseDTO(Pauta pauta) {
+        this.id = pauta.getId();
+        this.tempoMinutos = pauta.getTempoMinutos();
+        this.assunto = pauta.getAssunto();
+        this.status = pauta.getStatus();
+    }
 }

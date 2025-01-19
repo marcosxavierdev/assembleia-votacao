@@ -1,11 +1,18 @@
 package com.marcosxavier.assembleia.pauta.domain.dtos;
 
-import jakarta.validation.constraints.NotNull;
-import lombok.Value;
+import com.marcosxavier.assembleia.enums.PautaStatusEnum;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PautaRequestDTO {
-    Long tempo;
-    @NotNull
+
+    String tempoMinutos;
+    @NotEmpty(message = "O campo assunto não pode ser nulo e nem vazio")
     String assunto;
+    PautaStatusEnum status;
 }

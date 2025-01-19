@@ -14,10 +14,12 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EleitorUpdateDTO {
+
     @NotEmpty(message = "O campo id não pode ser nulo e nem vazio")
     private String id;
     @NotEmpty(message = "O campo CPF não pode ser nulo e nem vazio")
     @Size(min = 11, max = 11, message = "O CPF deve ter exatamente 11 caracteres")
     private String cpf;
+    @NotEmpty(message = "O campo status não pode ser nulo e nem vazio")
     private EleitorStatusEnum status;
 }

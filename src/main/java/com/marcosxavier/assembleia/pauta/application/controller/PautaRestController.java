@@ -1,11 +1,44 @@
 package com.marcosxavier.assembleia.pauta.application.controller;
 
+import com.marcosxavier.assembleia.pauta.application.service.PautaService;
+import com.marcosxavier.assembleia.pauta.domain.dtos.PautaRequestDTO;
+import com.marcosxavier.assembleia.pauta.domain.dtos.PautaResponseDTO;
+import com.marcosxavier.assembleia.pauta.domain.dtos.PautaUpdateDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @Log4j2
 @RequiredArgsConstructor
-public class PautaRestController {
+public class PautaRestController implements PautaAPI {
+
+    private final PautaService service;
+
+    @Override
+    public PautaResponseDTO getPautaById(String id) {
+        return service.buscaPorId(id);
+    }
+
+    @Override
+    public PautaResponseDTO createPauta(PautaRequestDTO request) {
+        return service.criaPauta(request);
+    }
+
+    @Override
+    public PautaResponseDTO updatePauta(PautaUpdateDTO update) {
+        return service.atualizaPauta(update);
+    }
+
+    @Override
+    public List<PautaResponseDTO> getTodasPautas() {
+        return service.buscaTodasPautas();
+    }
+
+    @Override
+    public void deletePauta(String id) {
+        service.deletaPauta(id);
+    }
 }

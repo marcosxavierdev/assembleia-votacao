@@ -1,5 +1,6 @@
 package com.marcosxavier.assembleia.voto.domain.entities;
 
+import com.marcosxavier.assembleia.enums.AprovacaoEnum;
 import com.marcosxavier.assembleia.voto.domain.dtos.VotoRequestDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -16,12 +17,13 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Document(collection = "Voto")
 public class Voto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String idPauta;
     private String idEleitor;
-    private Boolean aprovacao;
+    private AprovacaoEnum aprovacao;
 
     public Voto(VotoRequestDTO request) {
         this.id = UUID.randomUUID().toString();

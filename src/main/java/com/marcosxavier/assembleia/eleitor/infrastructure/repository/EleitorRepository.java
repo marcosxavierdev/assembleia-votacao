@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface EleitorRepository {
+
     Optional<Eleitor> findById(String id);
     List<EleitorResponseDTO> findAll();
     void delete(Eleitor eleitor);

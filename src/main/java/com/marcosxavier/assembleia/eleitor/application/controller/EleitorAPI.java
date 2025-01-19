@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import java.util.UUID;
-
 @RestController
 @RequestMapping(value="/public/v1/eleitor")
 public interface EleitorAPI {
@@ -25,11 +23,14 @@ public interface EleitorAPI {
     EleitorResponseDTO createEleitor (@Valid @RequestBody EleitorRequestDTO request);
 
     @PutMapping
+    @ResponseStatus(code = HttpStatus.OK)
     EleitorResponseDTO updateEleitor(@Valid @RequestBody EleitorUpdateDTO update);
 
     @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
     List<EleitorResponseDTO> getTodosEleitores();
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deleteEleitor (@PathVariable String id);
 }

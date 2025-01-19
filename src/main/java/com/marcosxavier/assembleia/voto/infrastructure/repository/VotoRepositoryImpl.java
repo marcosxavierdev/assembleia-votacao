@@ -1,8 +1,5 @@
 package com.marcosxavier.assembleia.voto.infrastructure.repository;
 
-import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorResponseDTO;
-import com.marcosxavier.assembleia.eleitor.domain.entities.Eleitor;
-import com.marcosxavier.assembleia.eleitor.infrastructure.persistence.EleitorMongoDBRepository;
 import com.marcosxavier.assembleia.voto.domain.dtos.VotoResponseDTO;
 import com.marcosxavier.assembleia.voto.domain.entities.Voto;
 import com.marcosxavier.assembleia.voto.infrastructure.persistence.VotoMongoDBRepository;

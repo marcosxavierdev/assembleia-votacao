@@ -1,6 +1,5 @@
 package com.marcosxavier.assembleia.assembler;
 
-
 import com.marcosxavier.assembleia.voto.domain.dtos.VotoResponseDTO;
 import com.marcosxavier.assembleia.voto.domain.entities.Voto;
 

@@ -62,6 +62,4 @@ public class EleitorServiceImpl implements EleitorService{
         repository.save(eleitor);
         return new EleitorResponseDTO(eleitor);
     }
-
-
 }

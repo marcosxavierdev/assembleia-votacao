@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-
 @Repository
 public interface VotoMongoDBRepository extends MongoRepository<Voto, String> {
     Optional<Voto> findById(String uuid);

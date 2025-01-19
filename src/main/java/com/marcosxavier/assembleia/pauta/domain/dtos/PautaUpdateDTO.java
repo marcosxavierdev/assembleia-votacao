@@ -1,17 +1,18 @@
 package com.marcosxavier.assembleia.pauta.domain.dtos;
 
-import com.marcosxavier.assembleia.enums.PautaStatusEnum;
-import jakarta.validation.constraints.NotNull;
-import lombok.Value;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.UUID;
-
-@Value
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PautaUpdateDTO {
-    @NotNull
-    Long id;
-    Long minutos;
-    @NotNull
+
+    @NotEmpty(message = "O id CPF não pode ser nulo e nem vazio")
+    String id;
+    String tempoMinutos;
+    @NotEmpty(message = "O campo assunto não pode ser nulo e nem vazio")
     String assunto;
-    PautaStatusEnum status;
 }
