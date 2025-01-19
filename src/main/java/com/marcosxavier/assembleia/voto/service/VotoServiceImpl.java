@@ -89,11 +89,11 @@ public class VotoServiceImpl implements VotoService {
         Eleitor eleitor = eleitorService.buscaEleitorPorId(idEleitor);
 
         if (!repository.buscaTodasVotosPorIdPautaEIdEleitor(idPauta, idEleitor).isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ERROR_ELECTOR_ALREADY_VOTED_FOR_THIS_SURVEY");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Voto deste eleitor já registrado nesta pauta");
         }
 
         if (pauta.getStatus().equals(PautaStatusEnum.CLOSED)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ERROR_THIS_SURVEY_IS_EXPIRED");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Pauta já encerrada, não aceitamos mais votos");
         }
     }
 }
