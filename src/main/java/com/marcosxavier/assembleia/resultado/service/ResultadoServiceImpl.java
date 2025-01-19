@@ -6,6 +6,7 @@ import com.marcosxavier.assembleia.pauta.service.PautaService;
 import com.marcosxavier.assembleia.pauta.dtos.PautaResponseDTO;
 import com.marcosxavier.assembleia.pauta.enums.PautaStatusEnum;
 import com.marcosxavier.assembleia.resultado.domain.dtos.ResultadoDto;
+import com.marcosxavier.assembleia.resultado.enums.ResultadoPautaEnum;
 import com.marcosxavier.assembleia.resultado.enums.ResultadoStatusEnum;
 import com.marcosxavier.assembleia.voto.persistence.repository.VotoRepository;
 import lombok.RequiredArgsConstructor;
@@ -34,11 +35,11 @@ public class ResultadoServiceImpl implements ResultadoService {
 
         String resultadoSessao;
         if (aprovacoes > reprovacoes) {
-            resultadoSessao = "Aprovado";
+            resultadoSessao = String.valueOf(ResultadoPautaEnum.APROVADO);
         } else if ((aprovacoes < reprovacoes)) {
-            resultadoSessao = "Reprovado";
+            resultadoSessao = String.valueOf(ResultadoPautaEnum.REPROVADO);
         } else {
-            resultadoSessao = "Empate";
+            resultadoSessao = String.valueOf(ResultadoPautaEnum.EMPATE);
         }
 
         ResultadoStatusEnum status = pauta.getStatus().equals(PautaStatusEnum.OPEN) ?
