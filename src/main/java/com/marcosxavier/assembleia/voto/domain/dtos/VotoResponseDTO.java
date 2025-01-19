@@ -1,6 +1,6 @@
 package com.marcosxavier.assembleia.voto.domain.dtos;
 
-import com.marcosxavier.assembleia.enums.AprovacaoEnum;
+import com.marcosxavier.assembleia.voto.enums.AprovacaoEnum;
 import com.marcosxavier.assembleia.voto.domain.entities.Voto;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.marcosxavier.assembleia.voto.domain.dtos;
 
-import com.marcosxavier.assembleia.enums.AprovacaoEnum;
+import com.marcosxavier.assembleia.voto.enums.AprovacaoEnum;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

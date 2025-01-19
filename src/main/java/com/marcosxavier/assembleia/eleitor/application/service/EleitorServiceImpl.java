@@ -1,11 +1,11 @@
 package com.marcosxavier.assembleia.eleitor.application.service;
 
+import com.marcosxavier.assembleia.eleitor.assembler.EleitorAssembler;
 import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorRequestDTO;
 import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorResponseDTO;
 import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorUpdateDTO;
 import com.marcosxavier.assembleia.eleitor.domain.entities.Eleitor;
-import com.marcosxavier.assembleia.eleitor.infrastructure.repository.EleitorRepository;
-import com.marcosxavier.assembleia.assembler.EleitorAssembler;
+import com.marcosxavier.assembleia.eleitor.persistence.repository.EleitorRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;

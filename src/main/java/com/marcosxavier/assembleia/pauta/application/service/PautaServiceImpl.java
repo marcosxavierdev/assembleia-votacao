@@ -1,11 +1,11 @@
 package com.marcosxavier.assembleia.pauta.application.service;
 
-import com.marcosxavier.assembleia.assembler.PautaAssembler;
+import com.marcosxavier.assembleia.pauta.assembler.PautaAssembler;
 import com.marcosxavier.assembleia.pauta.domain.dtos.PautaRequestDTO;
 import com.marcosxavier.assembleia.pauta.domain.dtos.PautaResponseDTO;
 import com.marcosxavier.assembleia.pauta.domain.dtos.PautaUpdateDTO;
 import com.marcosxavier.assembleia.pauta.domain.entities.Pauta;
-import com.marcosxavier.assembleia.pauta.infrastructure.repository.PautaRepository;
+import com.marcosxavier.assembleia.pauta.persistence.repository.PautaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;

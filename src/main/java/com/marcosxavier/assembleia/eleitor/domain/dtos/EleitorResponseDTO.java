@@ -1,7 +1,7 @@
 package com.marcosxavier.assembleia.eleitor.domain.dtos;
 
 import com.marcosxavier.assembleia.eleitor.domain.entities.Eleitor;
-import com.marcosxavier.assembleia.enums.EleitorStatusEnum;
+import com.marcosxavier.assembleia.eleitor.enums.EleitorStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

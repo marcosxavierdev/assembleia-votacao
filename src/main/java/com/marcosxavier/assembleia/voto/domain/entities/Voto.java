@@ -1,6 +1,6 @@
 package com.marcosxavier.assembleia.voto.domain.entities;
 
-import com.marcosxavier.assembleia.enums.AprovacaoEnum;
+import com.marcosxavier.assembleia.voto.enums.AprovacaoEnum;
 import com.marcosxavier.assembleia.voto.domain.dtos.VotoRequestDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;

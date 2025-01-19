@@ -1,6 +1,6 @@
 package com.marcosxavier.assembleia.pauta.domain.entities;
 
-import com.marcosxavier.assembleia.enums.PautaStatusEnum;
+import com.marcosxavier.assembleia.pauta.enums.PautaStatusEnum;
 import com.marcosxavier.assembleia.pauta.domain.dtos.PautaRequestDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;

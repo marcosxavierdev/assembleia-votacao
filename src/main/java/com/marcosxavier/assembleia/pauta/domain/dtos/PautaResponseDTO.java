@@ -1,6 +1,6 @@
 package com.marcosxavier.assembleia.pauta.domain.dtos;
 
-import com.marcosxavier.assembleia.enums.PautaStatusEnum;
+import com.marcosxavier.assembleia.pauta.enums.PautaStatusEnum;
 import com.marcosxavier.assembleia.pauta.domain.entities.Pauta;
 import lombok.AllArgsConstructor;
 import lombok.Data;

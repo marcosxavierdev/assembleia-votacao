@@ -1,7 +1,7 @@
 package com.marcosxavier.assembleia.eleitor.domain.entities;
 
 import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorRequestDTO;
-import com.marcosxavier.assembleia.enums.EleitorStatusEnum;
+import com.marcosxavier.assembleia.eleitor.enums.EleitorStatusEnum;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

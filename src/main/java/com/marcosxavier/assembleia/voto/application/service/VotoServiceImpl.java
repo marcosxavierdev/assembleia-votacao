@@ -1,11 +1,11 @@
 package com.marcosxavier.assembleia.voto.application.service;
 
-import com.marcosxavier.assembleia.assembler.VotoAssembler;
+import com.marcosxavier.assembleia.voto.assembler.VotoAssembler;
 import com.marcosxavier.assembleia.voto.domain.dtos.VotoRequestDTO;
 import com.marcosxavier.assembleia.voto.domain.dtos.VotoResponseDTO;
 import com.marcosxavier.assembleia.voto.domain.dtos.VotoUpdateDTO;
 import com.marcosxavier.assembleia.voto.domain.entities.Voto;
-import com.marcosxavier.assembleia.voto.infrastructure.repository.VotoRepository;
+import com.marcosxavier.assembleia.voto.persistence.repository.VotoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;

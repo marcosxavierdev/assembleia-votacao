@@ -1,6 +1,6 @@
 package com.marcosxavier.assembleia.eleitor.domain.dtos;
 
-import com.marcosxavier.assembleia.enums.EleitorStatusEnum;
+import com.marcosxavier.assembleia.eleitor.enums.EleitorStatusEnum;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
