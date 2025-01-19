@@ -16,4 +16,5 @@ public interface EleitorRepository {
     void salva(Eleitor eleitor);
     List<Eleitor> buscaListaPorCpf(String cpf);
     Optional<Eleitor> buscaPorCpf(String cpf);
+    void zeraCollectionEleitor();
 }

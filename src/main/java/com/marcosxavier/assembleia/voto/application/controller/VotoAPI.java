@@ -10,26 +10,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/public/v1/voto")
 public interface VotoAPI {
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/public/v1/voto/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     VotoResponseDTO buscaPorId(@PathVariable String id);
 
-    @PostMapping
+    @PostMapping(value = "/public/v1/voto")
     @ResponseStatus(code = HttpStatus.CREATED)
     VotoResponseDTO criaVoto (@Valid @RequestBody VotoRequestDTO request);
 
-    @PutMapping
+    @PutMapping(value = "/public/v1/voto")
     @ResponseStatus(code = HttpStatus.OK)
     VotoResponseDTO atualizaVoto(@Valid @RequestBody VotoUpdateDTO update);
 
-    @GetMapping
+    @GetMapping(value = "/public/v1/voto")
     @ResponseStatus(code = HttpStatus.OK)
     List<VotoResponseDTO> buscaTodosVotos();
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/public/v1/voto/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaVoto (@PathVariable String id);
+
+    @DeleteMapping(value = "/private/v1/voto")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void zeraCollectionVoto ();
 }

@@ -29,6 +29,11 @@ public class EleitorServiceImpl implements EleitorService{
         return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Eleitor não encontrado!"));
     }
 
+    @Override
+    public void zeraCollectionEleitor() {
+        repository.zeraCollectionEleitor();
+    }
+
     public Eleitor buscaEleitorPorCpf(String cpf) {
         return repository.buscaPorCpf(cpf).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Eleitor não encontrado!"));
     }

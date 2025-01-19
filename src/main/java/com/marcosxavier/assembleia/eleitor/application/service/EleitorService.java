@@ -3,6 +3,7 @@ package com.marcosxavier.assembleia.eleitor.application.service;
 import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorRequestDTO;
 import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorResponseDTO;
 import com.marcosxavier.assembleia.eleitor.domain.dtos.EleitorUpdateDTO;
+import com.marcosxavier.assembleia.eleitor.domain.entities.Eleitor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface EleitorService {
     List<EleitorResponseDTO> buscaTodosEleitores();
     void deletaEleitor(String id);
     EleitorResponseDTO buscaPorCpf(String cpf);
+    Eleitor buscaEleitorPorId(String id);
+    void zeraCollectionEleitor();
 }

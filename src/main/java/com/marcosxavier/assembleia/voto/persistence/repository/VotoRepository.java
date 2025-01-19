@@ -14,4 +14,7 @@ public interface VotoRepository {
     List<VotoResponseDTO> buscaLista();
     void deleta(Voto voto);
     void salva(Voto voto);
+    List<Voto> buscaTodasVotosPorIdPautaEIdEleitor(String idPauta, String idEleitor);
+    void zeraCollectionVoto();
+    Long contaVotosPorPautaAprovacao(String idPauta, String aprovacao);
 }

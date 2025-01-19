@@ -5,6 +5,7 @@ import com.marcosxavier.assembleia.pauta.domain.dtos.PautaRequestDTO;
 import com.marcosxavier.assembleia.pauta.domain.dtos.PautaResponseDTO;
 import com.marcosxavier.assembleia.pauta.domain.dtos.PautaUpdateDTO;
 import com.marcosxavier.assembleia.pauta.domain.entities.Pauta;
+import com.marcosxavier.assembleia.pauta.enums.PautaStatusEnum;
 import com.marcosxavier.assembleia.pauta.persistence.repository.PautaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -23,6 +24,20 @@ public class PautaServiceImpl implements PautaService{
 
     public Pauta buscaPautaPorId(String id) {
         return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pauta não encontrada!"));
+    }
+
+    @Override
+    public void zeraCollectionPauta() {
+        repository.zeraCollectionPauta();
+    }
+
+    @Override
+    public PautaResponseDTO encerraPauta(String id) {
+        var pauta = buscaPautaPorId(id);
+        pauta.setStatus(PautaStatusEnum.CLOSED);
+        repository.salva(pauta);
+        var pautaMapper= new PautaAssembler();
+        return pautaMapper.toResponseDTO(pauta);
     }
 
     @Override

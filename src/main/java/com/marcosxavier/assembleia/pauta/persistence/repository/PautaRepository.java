@@ -12,4 +12,5 @@ public interface PautaRepository {
     List<PautaResponseDTO> buscaLista();
     void deleta(Pauta pauta);
     void salva(Pauta pauta);
+    void zeraCollectionPauta();
 }

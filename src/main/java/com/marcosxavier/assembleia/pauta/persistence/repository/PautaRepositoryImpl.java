@@ -39,4 +39,9 @@ public class PautaRepositoryImpl implements PautaRepository {
     public void salva(Pauta pauta) {
         repository.save(pauta);
     }
+
+    @Override
+    public void zeraCollectionPauta() {
+        repository.deleteAll();
+    }
 }

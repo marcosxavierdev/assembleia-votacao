@@ -41,4 +41,14 @@ public class PautaRestController implements PautaAPI {
     public void deletaPauta(String id) {
         service.deletaPauta(id);
     }
+
+    @Override
+    public void zeraCollectionPauta() {
+        service.zeraCollectionPauta();
+    }
+
+    @Override
+    public PautaResponseDTO encerrarPauta(String id) {
+        return service.encerraPauta(id);
+    }
 }

@@ -43,4 +43,9 @@ public class VotoRestController implements VotoAPI {
     public void deletaVoto(String id) {
         service.deletaVoto(id);
     }
+
+    @Override
+    public void zeraCollectionVoto() {
+        service.zeraCollectionVoto();
+    }
 }

@@ -14,4 +14,5 @@ public interface VotoService {
     VotoResponseDTO atualizaVoto(VotoUpdateDTO update);
     List<VotoResponseDTO> buscaTodosVotos();
     void deletaVoto(String id);
+    void zeraCollectionVoto();
 }

@@ -1,4 +1,4 @@
-package com.marcosxavier.assembleia.global.enums;
+package com.marcosxavier.assembleia.resultado.enums;
 
 public enum ResultadoStatusEnum {
     IN_PROGRESS,

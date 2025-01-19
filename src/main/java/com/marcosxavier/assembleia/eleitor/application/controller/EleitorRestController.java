@@ -47,4 +47,9 @@ public class EleitorRestController implements EleitorAPI{
     public void deletaEleitor(String id) {
         service.deletaEleitor(id);
     }
+
+    @Override
+    public void zeraCollectionEleitor() {
+        service.zeraCollectionEleitor();
+    }
 }

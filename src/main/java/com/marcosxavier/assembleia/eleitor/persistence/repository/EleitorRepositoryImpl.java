@@ -29,6 +29,11 @@ public class EleitorRepositoryImpl implements EleitorRepository{
     }
 
     @Override
+    public void zeraCollectionEleitor() {
+        repository.deleteAll();
+    }
+
+    @Override
     public List<EleitorResponseDTO> buscaLista() {
         return repository.findAll().stream()
                 .map(EleitorResponseDTO::new)

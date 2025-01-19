@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/public/v1/eleitor")
 public interface EleitorAPI {
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/public/v1/eleitor/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.OK)
     EleitorResponseDTO buscaPorId(@PathVariable String id);
 
@@ -23,19 +22,23 @@ public interface EleitorAPI {
     @ResponseStatus(code = HttpStatus.OK)
     EleitorResponseDTO buscaPorCpf(@PathVariable String cpf);
 
-    @PostMapping
+    @PostMapping(value = "/public/v1/eleitor")
     @ResponseStatus(code = HttpStatus.CREATED)
     EleitorResponseDTO criaEleitor (@Valid @RequestBody EleitorRequestDTO request);
 
-    @PutMapping
+    @PutMapping(value = "/public/v1/eleitor")
     @ResponseStatus(code = HttpStatus.OK)
     EleitorResponseDTO atualizaEleitor(@Valid @RequestBody EleitorUpdateDTO update);
 
-    @GetMapping
+    @GetMapping(value = "/public/v1/eleitor")
     @ResponseStatus(code = HttpStatus.OK)
     List<EleitorResponseDTO> buscaTodosEleitores();
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/public/v1/eleitor/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaEleitor (@PathVariable String id);
+
+    @DeleteMapping(value = "/private/v1/eleitor")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void zeraCollectionEleitor ();
 }

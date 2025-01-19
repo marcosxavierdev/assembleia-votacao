@@ -39,4 +39,19 @@ public class VotoRepositoryImpl implements VotoRepository{
     public void salva(Voto voto) {
         repository.save(voto);
     }
+
+    @Override
+    public List<Voto> buscaTodasVotosPorIdPautaEIdEleitor(String idPauta, String idEleitor) {
+        return repository.findByIdPautaAndIdEleitor(idPauta,idEleitor);
+    }
+
+    @Override
+    public void zeraCollectionVoto() {
+        repository.deleteAll();
+    }
+
+    @Override
+    public Long contaVotosPorPautaAprovacao(String idPauta, String aprovacao) {
+        return repository.countByIdPautaAndAprovacao(idPauta, aprovacao);
+    }
 }
