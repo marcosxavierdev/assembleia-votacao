@@ -1,6 +1,7 @@
 package com.marcosxavier.assembleia.resultado.service;
 
 import com.marcosxavier.assembleia.eleitor.service.EleitorService;
+import com.marcosxavier.assembleia.pauta.entities.Pauta;
 import com.marcosxavier.assembleia.pauta.service.PautaService;
 import com.marcosxavier.assembleia.pauta.dtos.PautaResponseDTO;
 import com.marcosxavier.assembleia.pauta.enums.PautaStatusEnum;
@@ -10,6 +11,10 @@ import com.marcosxavier.assembleia.voto.persistence.repository.VotoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -49,5 +54,25 @@ public class ResultadoServiceImpl implements ResultadoService {
 
         return resultadoDto;
 
+    }
+
+    @Override
+    public List<ResultadoDto> listaResultados() {
+        List<PautaResponseDTO> todasPautas = pautaService.buscaTodasPautas();
+
+        List<Pauta> listaPautas = todasPautas.stream()
+                .map(pautaResponseDTO -> new Pauta(
+                        pautaResponseDTO.getId(),
+                        pautaResponseDTO.getTempoMinutos(),
+                        pautaResponseDTO.getAssunto(),
+                        pautaResponseDTO.getStatus()
+                ))
+                .collect(Collectors.toList());
+
+        List<ResultadoDto> listaResultados = new ArrayList<>();
+        for (Pauta pauta : listaPautas) {
+            listaResultados.add(buscaResultadoPorPauta(pauta.getId()));
+        }
+        return listaResultados;
     }
 }

@@ -13,8 +13,8 @@ import java.util.UUID;
 @ToString
 @Data
 @Builder
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor()
+@AllArgsConstructor()
 @Document(collection = "Pauta")
 public class Pauta {
     @Id
