@@ -1,2 +1,0 @@
-incluir openapi
-usar mongo db
