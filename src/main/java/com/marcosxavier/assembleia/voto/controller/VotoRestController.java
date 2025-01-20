@@ -20,31 +20,37 @@ public class VotoRestController implements VotoAPI {
 
     @Override
     public VotoResponseDTO buscaPorId(String id) {
+        log.info("VotoRestController - buscando voto: {}",id);
         return service.buscaPorId(id);
     }
 
     @Override
     public VotoResponseDTO criaVoto(@Valid VotoRequestDTO request) {
+        log.info("EleitorRestController - criando voto");
         return service.criaVoto(request);
     }
 
     @Override
     public VotoResponseDTO atualizaVoto(@Valid VotoUpdateDTO update) {
+        log.info("EleitorRestController - atualizando voto");
         return service.atualizaVoto(update);
     }
 
     @Override
     public List<VotoResponseDTO> buscaTodosVotos() {
+        log.info("EleitorRestController - listando votos");
         return service.buscaTodosVotos();
     }
 
     @Override
     public void deletaVoto(String id) {
+        log.info("VotoRestController - deletando um voto: {}",id);
         service.deletaVoto(id);
     }
 
     @Override
     public void zeraCollectionVoto() {
+        log.info("VotoRestController - zerando a collection de voto");
         service.zeraCollectionVoto();
     }
 }

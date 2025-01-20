@@ -17,11 +17,13 @@ public class ResultadoRestController implements ResultadoAPI {
 
     @Override
     public ResultadoDto buscaResultadoPorPauta(String idPauta) {
+        log.info("ResultadoRestController - buscando resultado: {}",idPauta);
         return service.buscaResultadoPorPauta(idPauta);
     }
 
     @Override
     public List<ResultadoDto> listarResultados() {
+        log.info("ResultadoRestController - listando resultados");
         return service.listaResultados();
     }
 }

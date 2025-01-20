@@ -29,6 +29,7 @@ public class ResultadoServiceImpl implements ResultadoService {
 
     @Override
     public ResultadoDto buscaResultadoPorPauta(String idPauta) {
+        log.info("[iniciando]ResultadoServiceImpl - buscaResultadoPorPauta: {}", idPauta);
         PautaResponseDTO pauta = pautaService.buscaPorId(idPauta);
         Long aprovacoes = votoRepository.contaVotosPorPautaAprovacao(idPauta, "SIM");
         Long reprovacoes = votoRepository.contaVotosPorPautaAprovacao(idPauta, "NAO");
@@ -52,13 +53,13 @@ public class ResultadoServiceImpl implements ResultadoService {
         resultadoDto.setTotalVotos(aprovacoes+reprovacoes);
         resultadoDto.setResultado(resultadoSessao);
         resultadoDto.setStatus(status);
-
+        log.info("[finalizando]ResultadoServiceImpl - buscaResultadoPorPauta: {}", idPauta);
         return resultadoDto;
-
     }
 
     @Override
     public List<ResultadoDto> listaResultados() {
+        log.info("[iniciando]ResultadoServiceImpl - listaResultados");
         List<PautaResponseDTO> todasPautas = pautaService.buscaTodasPautas();
 
         List<Pauta> listaPautas = todasPautas.stream()
@@ -74,6 +75,7 @@ public class ResultadoServiceImpl implements ResultadoService {
         for (Pauta pauta : listaPautas) {
             listaResultados.add(buscaResultadoPorPauta(pauta.getId()));
         }
+        log.info("[finalizando]ResultadoServiceImpl - listaResultados");
         return listaResultados;
     }
 }

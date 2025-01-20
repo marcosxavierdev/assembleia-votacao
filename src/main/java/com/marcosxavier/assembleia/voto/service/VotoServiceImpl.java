@@ -30,25 +30,31 @@ public class VotoServiceImpl implements VotoService {
     private final PautaService pautaService;
 
     public Voto buscaVotoPorId(String id) {
+        log.info("VotoServiceImpl - buscaVotoPorId: {}", id);
         return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Voto não encontrado!"));
     }
 
     @Override
     public VotoResponseDTO buscaPorId(String id) {
+        log.info("[iniciando]VotoServiceImpl - buscaPorId: {}", id);
         var voto = buscaVotoPorId(id);
+        log.info("[finalizando]VotoServiceImpl - buscaPorId: {}", id);
         return VotoMapper.INSTANCE.toVotoResponseDTO(voto);
     }
 
     @Override
     public VotoResponseDTO criaVoto(VotoRequestDTO request) {
+        log.info("[iniciando]VotoServiceImpl - criaVoto");
         validaVoto(request.getIdPauta(), request.getIdEleitor());
         var voto = new Voto(request);
         repository.salva(voto);
+        log.info("[finalizando]VotoServiceImpl - criaVoto");
         return new VotoResponseDTO(voto);
     }
 
     @Override
     public VotoResponseDTO atualizaVoto(VotoUpdateDTO update) {
+        log.info("[iniciando]VotoServiceImpl - atualizaVoto");
         Voto voto = buscaVotoPorId(update.getId());
         if (update.getIdPauta() != null) {
             voto.setIdPauta(update.getIdPauta());
@@ -60,34 +66,42 @@ public class VotoServiceImpl implements VotoService {
             voto.setAprovacao(update.getAprovacao());
         }
         repository.salva(voto);
+        log.info("[finalizando]VotoServiceImpl - atualizaVoto");
         return new VotoResponseDTO(voto);
     }
 
     @Override
     public List<VotoResponseDTO> buscaTodosVotos() {
+        log.info("VotoServiceImpl - buscaTodosVotos");
         return repository.buscaLista();
     }
 
     @Override
     public void deletaVoto(String id) {
+        log.info("[iniciando]VotoServiceImpl - deletaVoto: {}", id);
         Voto voto = buscaVotoPorId(id);
         repository.deleta(voto);
+        log.info("[finalizando]VotoServiceImpl - deletaVoto: {}", id);
     }
 
     @Override
     public void zeraCollectionVoto() {
+        log.info("[iniciando]VotoServiceImpl - zeraCollectionVoto");
         repository.zeraCollectionVoto();
+        log.info("[finalizando]VotoServiceImpl - zeraCollectionVoto");
     }
 
     public List<Voto> buscaTodasVotosPorIdPautaEIdEleitor(String  idPauta, String idEleitor) {
+        log.info("VotoServiceImpl - buscaTodasVotosPorIdPautaEIdEleitor: {} e {}", idPauta, idEleitor);
         return repository.buscaTodasVotosPorIdPautaEIdEleitor(idPauta, idEleitor);
     }
 
     private void validaVoto(String  idPauta, String idEleitor) {
+        log.info("[iniciando]VotoServiceImpl - validaVoto: {} e {}", idPauta, idEleitor);
 
         Pauta pauta = pautaService.buscaPautaPorId(idPauta);
         Eleitor eleitor = eleitorService.buscaEleitorPorId(idEleitor);
-
+        log.info("[finalizando]VotoServiceImpl - validaVoto");
         if (!repository.buscaTodasVotosPorIdPautaEIdEleitor(idPauta, idEleitor).isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Voto deste eleitor já registrado nesta pauta");
         }

@@ -20,11 +20,13 @@ public class PautaRepositoryImpl implements PautaRepository {
 
     @Override
     public Optional<Pauta> buscaPorId(String id) {
+        log.info("PautaRepositoryImpl - buscaPorId: {}", id);
         return repository.findById(id);
     }
 
     @Override
     public List<PautaResponseDTO> buscaLista() {
+        log.info("PautaRepositoryImpl - buscaLista");
         return repository.findAll().stream()
                 .map(PautaResponseDTO::new)
                 .collect(Collectors.toList());
@@ -32,16 +34,19 @@ public class PautaRepositoryImpl implements PautaRepository {
 
     @Override
     public void deleta(Pauta pauta) {
+        log.info("PautaRepositoryImpl - deleta");
         repository.delete(pauta);
     }
 
     @Override
     public void salva(Pauta pauta) {
+        log.info("PautaRepositoryImpl - salva");
         repository.save(pauta);
     }
 
     @Override
     public void zeraCollectionPauta() {
+        log.info("PautaRepositoryImpl - zeraCollectionPauta");
         repository.deleteAll();
     }
 }
