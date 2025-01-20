@@ -1,6 +1,5 @@
 package com.marcosxavier.assembleia.pauta.service;
 
-import com.marcosxavier.assembleia.pauta.assembler.PautaAssembler;
 import com.marcosxavier.assembleia.pauta.assembler.PautaMapper;
 import com.marcosxavier.assembleia.pauta.dtos.PautaRequestDTO;
 import com.marcosxavier.assembleia.pauta.dtos.PautaResponseDTO;

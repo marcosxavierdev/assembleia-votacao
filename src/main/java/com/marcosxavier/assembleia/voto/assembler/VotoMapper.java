@@ -1,7 +1,5 @@
 package com.marcosxavier.assembleia.voto.assembler;
 
-import com.marcosxavier.assembleia.pauta.dtos.PautaResponseDTO;
-import com.marcosxavier.assembleia.pauta.entities.Pauta;
 import com.marcosxavier.assembleia.voto.dtos.VotoResponseDTO;
 import com.marcosxavier.assembleia.voto.entities.Voto;
 import org.mapstruct.Mapper;

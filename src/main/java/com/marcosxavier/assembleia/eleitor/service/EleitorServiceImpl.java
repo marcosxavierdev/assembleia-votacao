@@ -8,9 +8,10 @@ import com.marcosxavier.assembleia.eleitor.dtos.EleitorUpdateDTO;
 import com.marcosxavier.assembleia.eleitor.entities.Eleitor;
 import com.marcosxavier.assembleia.eleitor.enums.EleitorStatusEnum;
 import com.marcosxavier.assembleia.eleitor.persistence.repository.EleitorRepository;
-import com.marcosxavier.assembleia.global.utils.ValidadorCPF;
+import com.marcosxavier.assembleia.global.utils.validadorCPF.ValidadorCPF;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,6 +24,9 @@ import java.util.List;
 public class EleitorServiceImpl implements EleitorService{
 
     private final EleitorRepository repository;
+
+    @Autowired
+    ValidadorCPF validadorCPF;
 
     public Eleitor buscaEleitorPorId(String id) {
         return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Eleitor não encontrado!"));
@@ -89,7 +93,7 @@ public class EleitorServiceImpl implements EleitorService{
 
     private void validaEleitor(String cpf) {
 
-        if (!ValidadorCPF.cpfValido(cpf)) {
+        if (!validadorCPF.consulaAPIValidaCPF(cpf)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "UNABLE_TO_VOTE: CPF inválido");
         }
 

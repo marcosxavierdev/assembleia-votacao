@@ -1,6 +1,5 @@
 package com.marcosxavier.assembleia.voto.controller;
 
-import com.marcosxavier.assembleia.eleitor.dtos.EleitorResponseDTO;
 import com.marcosxavier.assembleia.voto.dtos.VotoRequestDTO;
 import com.marcosxavier.assembleia.voto.dtos.VotoResponseDTO;
 import com.marcosxavier.assembleia.voto.dtos.VotoUpdateDTO;
