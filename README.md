@@ -28,16 +28,27 @@ A Aplicação utiliza um cluster do MongoDB Atlas privado (conta de usuário nã
 
 A documentação da API é gerada automaticamente através do SpringDoc OpenAPI e pode ser acessada pelo Swagger UI. Para visualizar a documentação interativa da API, siga os passos abaixo:  
 
-1. **Inicie a aplicação**: Certifique-se de que a aplicação esteja em execução. Se estiver usando uma IDe, pode iniciar uma run, mas se você estiver utilizando o Maven, pode iniciar a aplicação com o seguinte comando:  
+### Configuração do Ambiente  
+
+1. **Clone o repositório (via terminal/bash)**:  
+
+
+    git clone https://github.com/marcosxavierdev/assembleia-votacao.git
+
+
+    cd assembleia-votacao
+
+
+2. **Inicie a aplicação**: Certifique-se de que a aplicação esteja em execução. Se estiver usando uma IDe, pode iniciar uma run, mas se você estiver utilizando o Maven, pode iniciar a aplicação com o seguinte comando (via terminal/bash):  
 
 
     mvn spring-boot:run  
 
 
-2. **Acesse o Swagger UI**: Abra seu navegador e acesse o seguinte URL: http://localhost:8080/assembleia/api/swagger-ui.html
+3. **Acesse o Swagger UI**: Abra seu navegador e acesse o seguinte URL: http://localhost:8080/assembleia/api/swagger-ui.html
 
 
-3. **Explore a API**: Na interface do Swagger UI, você pode:
+4. **Explore a API**: Na interface do Swagger UI, você pode:
 
 - Visualizar todas as rotas disponíveis na API.
 - Testar requisições diretamente pela interface.
@@ -238,6 +249,114 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 ## Testes Unitarios
 
 ## Testes Funcionais
+
+Este tópico fornece instruções sobre como executar os testes funcionais para a API de Gestão de Votação usando o Postman.  
+
+## Conteúdo  
+
+- [Requisitos](#requisitos)  
+- [Configuração do Ambiente](#configuração-do-ambiente)  
+- [Executando os Testes Funcionais](#executando-os-testes-funcionais)  
+- [Estrutura da Coleção do Postman](#estrutura-da-coleção-do-postman)  
+- [Estrutura do Ambiente do Postman](#estrutura-do-ambiente-do-postman)  
+- [Contribuições](#contribuições)  
+
+## Requisitos  
+
+Antes de executar os testes, certifique-se de ter as seguintes ferramentas instaladas:  
+
+- Postman  
+
+## Configuração do Ambiente  
+
+1. **Clone o repositório (via terminal/bash)**:  
+
+
+    git clone https://github.com/marcosxavierdev/assembleia-votacao.git
+
+
+    cd assembleia-votacao
+
+
+2. **Inicie a aplicação**: Certifique-se de que a aplicação esteja em execução. Se estiver usando uma IDe, pode iniciar uma run, mas se você estiver utilizando o Maven, pode iniciar a aplicação com o seguinte comando (via terminal/bash):  
+
+
+    mvn spring-boot:run  
+
+
+3. **Importe a coleção e o ambiente do Postman**:
+
+A coleção de testes está localizada em **resources/postman-collection/Assembleia.postman_collection.**
+
+O ambiente do Postman está localizado em **resources/postman-collection/AssembleiaVariaveis.postman_environment.**
+
+
+4. **Abra o Postman e importe os arquivos**:
+
+Vá em "Import" no Postman e selecione os arquivos da coleção e do ambiente.
+Certifique-se de que a coleção e o ambiente estejam selecionados corretamente.
+
+
+5. **Executando os Testes Funcionais**
+
+- Verifique se o ambiente correto está selecionado no Postman.
+- Selecione a coleção de testes funcionais no painel esquerdo.
+- Clique no botão "Run" no canto superior direito.
+- Na janela do "Runner", configure as opções desejadas, como número de iterações, delay entre as requisições, etc.
+- Clique em "Run" para executar os testes.
+- O resultado dos testes será exibido no painel de execução do Postman. Você poderá visualizar o status de cada requisição (passou/falhou) e outras informações relevantes.
+
+### Estrutura da Coleção do Postman
+A coleção de testes funcionais contém os seguintes grupos de testes:
+
+Eleitor
+- Criar Eleitor
+- Buscar Eleitor por ID
+- Atualizar Eleitor
+- Buscar Todos os Eleitores
+- Deletar Eleitor
+- zera collection mongodb (somente para testes)
+
+Pauta
+- Criar Pauta
+- Buscar Pauta por ID
+- Atualizar Pauta
+- Buscar Todas as Pautas
+- Deletar Pauta
+- Encerrar Pauta
+- zera collection mongodb (somente para testes)
+
+Voto
+- Criar Voto
+- Buscar Voto por ID
+- Atualizar Voto
+- Buscar Todos os Votos
+- Deletar Voto
+- zera collection mongodb (somente para testes)
+
+Resultado
+- Buscar Resultado por Pauta
+- Listar Todos os Resultados
+
+Cada grupo contém testes individuais que verificam o comportamento da API em diferentes cenários.
+
+### Estrutura do Ambiente do Postman
+
+O ambiente do Postman contém as seguintes variáveis:
+
+- base_url: a URL base da API
+- eleitor_id: ID de um eleitor existente
+- pauta_id: ID de uma pauta existente
+- voto_id: ID de um voto existente
+
+Certifique-se de que essas variáveis estejam configuradas corretamente de acordo com o seu ambiente de teste.
+
+### Observações:  
+
+- Este README assume que a coleção e o ambiente do Postman estão localizados em `resources/postman-collection`.  
+- Você pode ajustar a estrutura da coleção e do ambiente conforme necessário para atender às suas necessidades específicas.  
+- Inclua informações adicionais, como como configurar o ambiente de teste, se necessário.  
+- Considere adicionar seções sobre como gerar relatórios ou integrar os testes a um pipeline de CI/CD, se aplicável. 
 
 ## Arquitetura
 

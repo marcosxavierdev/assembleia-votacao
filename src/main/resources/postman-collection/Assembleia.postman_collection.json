@@ -7,87 +7,16 @@
 	},
 	"item": [
 		{
-			"name": "Voto",
+			"name": "Eleitor",
 			"item": [
 				{
-					"name": "Voto - buscar por id",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \r\n    \"cpf\": \"123.456.789-00\",  \r\n    \"status\": \"ATIVO\"  \r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/voto/:id",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{contexto}}",
-								"{{acesso}}",
-								"{{versao}}",
-								"voto",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "bf1fe065-8172-46ca-8f91-5880b5caff9c"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Voto - buscar todos",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \r\n    \"cpf\": \"123.456.789-00\",  \r\n    \"status\": \"ATIVO\"  \r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/voto",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{contexto}}",
-								"{{acesso}}",
-								"{{versao}}",
-								"voto"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Voto - criar",
+					"name": "Eleitor - criar",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPauta\": \"c691174b-dafb-4414-b2e8-43cc0503f55d\",\r\n    \"idEleitor\": \"a9679bfe-52e4-40bc-ab6b-ef5c725a2faa\",\r\n    \"aprovacao\": \"NAO\"\r\n}",
+							"raw": "{  \r\n    \"cpf\": \"85346008055\"\r\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -95,7 +24,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/voto",
+							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor",
 							"host": [
 								"{{host}}"
 							],
@@ -103,49 +32,23 @@
 								"{{contexto}}",
 								"{{acesso}}",
 								"{{versao}}",
-								"voto"
+								"eleitor"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Voto - atualizar",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \r\n    \"id\":\"7d70fa9c-65ec-4cb1-b826-56499cebeb83\",\r\n    \"idPauta\": \"12345\",\r\n    \"idEleitor\": \"12345\",\r\n    \"aprovacao\": \"NAO\"\r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/voto",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{contexto}}",
-								"{{acesso}}",
-								"{{versao}}",
-								"voto"
-							]
-						}
+					"name": "Eleitor - buscar por id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
 					},
-					"response": []
-				},
-				{
-					"name": "Voto - deletar",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{  \r\n    \"cpf\": \"123.456.789-00\",  \r\n    \"status\": \"ATIVO\"  \r\n} ",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -153,7 +56,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/voto/:id",
+							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor/:id",
 							"host": [
 								"{{host}}"
 							],
@@ -161,13 +64,13 @@
 								"{{contexto}}",
 								"{{acesso}}",
 								"{{versao}}",
-								"voto",
+								"eleitor",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "bf1fe065-8172-46ca-8f91-5880b5caff9c"
+									"value": "7828aad9-9638-484c-9a96-8cf33505e2c2"
 								}
 							]
 						}
@@ -175,7 +78,108 @@
 					"response": []
 				},
 				{
-					"name": "Voto - zerabanco",
+					"name": "Eleitor - buscar por CPF",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor/byCPF/:cpf",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{contexto}}",
+								"{{acesso}}",
+								"{{versao}}",
+								"eleitor",
+								"byCPF",
+								":cpf"
+							],
+							"variable": [
+								{
+									"key": "cpf",
+									"value": "60643179062"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eleitor - buscar todos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"cpf\": \"123.456.789-00\",  \r\n    \"status\": \"ATIVO\"  \r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{contexto}}",
+								"{{acesso}}",
+								"{{versao}}",
+								"eleitor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eleitor - atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"id\":\"d5b66c43-a8cb-492a-82c1-16bdbe5f510c\", \r\n    \"cpf\":\"05318038565\",\r\n    \"status\": \"ABLE_TO_VOTE\"  \r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{contexto}}",
+								"{{acesso}}",
+								"{{versao}}",
+								"eleitor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eleitor - deletar",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -189,7 +193,43 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/{{contexto}}/private/{{versao}}/voto",
+							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{contexto}}",
+								"{{acesso}}",
+								"{{versao}}",
+								"eleitor",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5b68281b-c565-4fda-936e-a224a44b45ba"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eleitor - zera collection mongodb",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"cpf\": \"123.456.789-00\",  \r\n    \"status\": \"ATIVO\"  \r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{contexto}}/private/{{versao}}/eleitor",
 							"host": [
 								"{{host}}"
 							],
@@ -197,7 +237,7 @@
 								"{{contexto}}",
 								"private",
 								"{{versao}}",
-								"voto"
+								"eleitor"
 							]
 						}
 					},
@@ -411,7 +451,7 @@
 					"response": []
 				},
 				{
-					"name": "pauta - zerabanco",
+					"name": "pauta - zera collection mongodb",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -442,16 +482,87 @@
 			]
 		},
 		{
-			"name": "Eleitor",
+			"name": "Voto",
 			"item": [
 				{
-					"name": "Eleitor - criar",
+					"name": "Voto - buscar por id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"cpf\": \"123.456.789-00\",  \r\n    \"status\": \"ATIVO\"  \r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/voto/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{contexto}}",
+								"{{acesso}}",
+								"{{versao}}",
+								"voto",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "bf1fe065-8172-46ca-8f91-5880b5caff9c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Voto - buscar todos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"cpf\": \"123.456.789-00\",  \r\n    \"status\": \"ATIVO\"  \r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/voto",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{contexto}}",
+								"{{acesso}}",
+								"{{versao}}",
+								"voto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Voto - criar",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{  \r\n    \"cpf\": \"85346008055\"\r\n} ",
+							"raw": "{\r\n    \"idPauta\": \"c691174b-dafb-4414-b2e8-43cc0503f55d\",\r\n    \"idEleitor\": \"a9679bfe-52e4-40bc-ab6b-ef5c725a2faa\",\r\n    \"aprovacao\": \"NAO\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -459,7 +570,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor",
+							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/voto",
 							"host": [
 								"{{host}}"
 							],
@@ -467,131 +578,20 @@
 								"{{contexto}}",
 								"{{acesso}}",
 								"{{versao}}",
-								"eleitor"
+								"voto"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Eleitor - buscar por id",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor/:id",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{contexto}}",
-								"{{acesso}}",
-								"{{versao}}",
-								"eleitor",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "7828aad9-9638-484c-9a96-8cf33505e2c2"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Eleitor - buscar por CPF",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor/byCPF/:cpf",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{contexto}}",
-								"{{acesso}}",
-								"{{versao}}",
-								"eleitor",
-								"byCPF",
-								":cpf"
-							],
-							"variable": [
-								{
-									"key": "cpf",
-									"value": "60643179062"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Eleitor - buscar todos",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \r\n    \"cpf\": \"123.456.789-00\",  \r\n    \"status\": \"ATIVO\"  \r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{contexto}}",
-								"{{acesso}}",
-								"{{versao}}",
-								"eleitor"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Eleitor - atualizar",
+					"name": "Voto - atualizar",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{  \r\n    \"id\":\"d5b66c43-a8cb-492a-82c1-16bdbe5f510c\", \r\n    \"cpf\":\"05318038565\",\r\n    \"status\": \"ABLE_TO_VOTE\"  \r\n} ",
+							"raw": "{  \r\n    \"id\":\"7d70fa9c-65ec-4cb1-b826-56499cebeb83\",\r\n    \"idPauta\": \"12345\",\r\n    \"idEleitor\": \"12345\",\r\n    \"aprovacao\": \"NAO\"\r\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -599,7 +599,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor",
+							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/voto",
 							"host": [
 								"{{host}}"
 							],
@@ -607,14 +607,14 @@
 								"{{contexto}}",
 								"{{acesso}}",
 								"{{versao}}",
-								"eleitor"
+								"voto"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Eleitor - deletar",
+					"name": "Voto - deletar",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -628,7 +628,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/eleitor/:id",
+							"raw": "{{host}}/{{contexto}}/{{acesso}}/{{versao}}/voto/:id",
 							"host": [
 								"{{host}}"
 							],
@@ -636,13 +636,13 @@
 								"{{contexto}}",
 								"{{acesso}}",
 								"{{versao}}",
-								"eleitor",
+								"voto",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "5b68281b-c565-4fda-936e-a224a44b45ba"
+									"value": "bf1fe065-8172-46ca-8f91-5880b5caff9c"
 								}
 							]
 						}
@@ -650,7 +650,7 @@
 					"response": []
 				},
 				{
-					"name": "Eleitor - zerabanco",
+					"name": "Voto - zera collection mongodb",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -664,7 +664,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/{{contexto}}/private/{{versao}}/eleitor",
+							"raw": "{{host}}/{{contexto}}/private/{{versao}}/voto",
 							"host": [
 								"{{host}}"
 							],
@@ -672,7 +672,7 @@
 								"{{contexto}}",
 								"private",
 								"{{versao}}",
-								"eleitor"
+								"voto"
 							]
 						}
 					},
