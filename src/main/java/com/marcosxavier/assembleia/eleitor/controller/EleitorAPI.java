@@ -27,7 +27,7 @@ public interface EleitorAPI {
             })
     EleitorResponseDTO buscaPorId(@PathVariable String id);
 
-    @GetMapping(value = "/byCPF/{cpf}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/public/v1/eleitor/byCPF/{cpf}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.OK)
     @Operation(tags = "Eleitor", summary = "Busca um eleitor pelo cpf correspondente",
             responses = {
