@@ -60,58 +60,58 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 1. Buscar Eleitor por ID  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/eleitor/{id}`  
-- **Descrição**: Busca um eleitor pelo ID.  
+- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity/{id}`  
+- **Descrição**: Busca um eleitorMongodbEntity pelo ID.  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados do eleitor.  
+  - `200 OK`: Retorna os dados do eleitorMongodbEntity.  
   - `404 NOT FOUND`: Eleitor não encontrado.  
 
 #### 2. Buscar Eleitor por CPF  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/eleitor/byCPF/{cpf}`  
-- **Descrição**: Busca um eleitor pelo CPF.  
+- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity/byCPF/{cpf}`  
+- **Descrição**: Busca um eleitorMongodbEntity pelo CPF.  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados do eleitor.  
+  - `200 OK`: Retorna os dados do eleitorMongodbEntity.  
   - `404 NOT FOUND`: Eleitor não encontrado.  
 
 #### 3. Criar Eleitor  
 - **Método**: `POST`  
-- **URL**: `/assembleia/api/public/v1/eleitor`  
-- **Descrição**: Cadastra um novo eleitor.  
+- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity`  
+- **Descrição**: Cadastra um novo eleitorMongodbEntity.  
 - **Corpo**: `EleitorRequestDTO`  
 - **Respostas**:  
-  - `201 CREATED`: Retorna os dados do eleitor criado.  
+  - `201 CREATED`: Retorna os dados do eleitorMongodbEntity criado.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Recurso não encontrado.  
 
 #### 4. Atualizar Eleitor  
 - **Método**: `PUT`  
-- **URL**: `/assembleia/api/public/v1/eleitor`  
-- **Descrição**: Atualiza os dados de um eleitor pelo ID.  
+- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity`  
+- **Descrição**: Atualiza os dados de um eleitorMongodbEntity pelo ID.  
 - **Corpo**: `EleitorUpdateDTO`  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados atualizados do eleitor.  
+  - `200 OK`: Retorna os dados atualizados do eleitorMongodbEntity.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Eleitor não encontrado.  
 
 #### 5. Buscar Todos os Eleitores  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/eleitor`  
+- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity`  
 - **Descrição**: Retorna uma lista de todos os eleitores cadastrados.  
 - **Respostas**:  
   - `200 OK`: Lista de eleitores.  
 
 #### 6. Deletar Eleitor  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/public/v1/eleitor/{id}`  
-- **Descrição**: Remove um eleitor pelo ID.  
+- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity/{id}`  
+- **Descrição**: Remove um eleitorMongodbEntity pelo ID.  
 - **Respostas**:  
   - `204 NO CONTENT`: Eleitor deletado com sucesso.  
   - `404 NOT FOUND`: Eleitor não encontrado.  
 
 #### 7. Zerar Collection de Eleitores (Apenas para Testes)  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/private/v1/eleitor`  
+- **URL**: `/assembleia/api/private/v1/eleitorMongodbEntity`  
 - **Descrição**: Deleta todos os registros de eleitores.  
 - **Respostas**:  
   - `204 NO CONTENT`: Coleção zerada.  
@@ -120,110 +120,110 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 1. Buscar Pauta por ID  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/pauta/{id}`  
-- **Descrição**: Busca uma pauta pelo ID.  
+- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity/{id}`  
+- **Descrição**: Busca uma pautaMongodbEntity pelo ID.  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados da pauta.  
+  - `200 OK`: Retorna os dados da pautaMongodbEntity.  
   - `404 NOT FOUND`: Pauta não encontrada.  
 
 #### 2. Criar Pauta  
 - **Método**: `POST`  
-- **URL**: `/assembleia/api/public/v1/pauta`  
-- **Descrição**: Cria uma nova pauta.  
+- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity`  
+- **Descrição**: Cria uma nova pautaMongodbEntity.  
 - **Corpo**: `PautaRequestDTO`  
 - **Respostas**:  
-  - `201 CREATED`: Retorna os dados da pauta criada.  
+  - `201 CREATED`: Retorna os dados da pautaMongodbEntity criada.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Recurso não encontrado.  
 
 #### 3. Atualizar Pauta  
 - **Método**: `PUT`  
-- **URL**: `/assembleia/api/public/v1/pauta`  
-- **Descrição**: Atualiza uma pauta pelo ID.  
+- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity`  
+- **Descrição**: Atualiza uma pautaMongodbEntity pelo ID.  
 - **Corpo**: `PautaUpdateDTO`  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados atualizados da pauta.  
+  - `200 OK`: Retorna os dados atualizados da pautaMongodbEntity.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Pauta não encontrada.  
 
 #### 4. Buscar Todas as Pautas  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/pauta`  
+- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity`  
 - **Descrição**: Retorna uma lista de todas as pautas cadastradas.  
 - **Respostas**:  
   - `200 OK`: Lista de pautas.  
 
 #### 5. Deletar Pauta  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/public/v1/pauta/{id}`  
-- **Descrição**: Remove uma pauta pelo ID.  
+- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity/{id}`  
+- **Descrição**: Remove uma pautaMongodbEntity pelo ID.  
 - **Respostas**:  
   - `204 NO CONTENT`: Pauta deletada com sucesso.  
   - `404 NOT FOUND`: Pauta não encontrada.  
 
 #### 6. Zerar Collection de Pautas (Apenas para Testes)  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/private/v1/pauta`  
+- **URL**: `/assembleia/api/private/v1/pautaMongodbEntity`  
 - **Descrição**: Deleta todos os registros de pautas.  
 - **Respostas**:  
   - `204 NO CONTENT`: Coleção zerada.  
 
 #### 7. Encerrar Pauta  
 - **Método**: `POST`  
-- **URL**: `/assembleia/api/public/v1/pauta/{id}/encerrar`  
-- **Descrição**: Encerra uma pauta pelo ID.  
+- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity/{id}/encerrar`  
+- **Descrição**: Encerra uma pautaMongodbEntity pelo ID.  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados da pauta encerrada.  
+  - `200 OK`: Retorna os dados da pautaMongodbEntity encerrada.  
   - `404 NOT FOUND`: Pauta não encontrada.  
 ---  
 ### Contexto:Voto  
 
 #### 1. Buscar Voto por ID  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/voto/{id}`  
-- **Descrição**: Busca um voto pelo ID.  
+- **URL**: `/assembleia/api/public/v1/votoMongodbEntity/{id}`  
+- **Descrição**: Busca um votoMongodbEntity pelo ID.  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados do voto.  
+  - `200 OK`: Retorna os dados do votoMongodbEntity.  
   - `404 NOT FOUND`: Voto não encontrado.  
 
 #### 2. Criar Voto  
 - **Método**: `POST`  
-- **URL**: `/assembleia/api/public/v1/voto`  
-- **Descrição**: Cadastra um novo voto.  
+- **URL**: `/assembleia/api/public/v1/votoMongodbEntity`  
+- **Descrição**: Cadastra um novo votoMongodbEntity.  
 - **Corpo**: `VotoRequestDTO`  
 - **Respostas**:  
-  - `201 CREATED`: Retorna os dados do voto criado.  
+  - `201 CREATED`: Retorna os dados do votoMongodbEntity criado.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Recurso não encontrado.  
 
 #### 3. Atualizar Voto  
 - **Método**: `PUT`  
-- **URL**: `/assembleia/api/public/v1/voto`  
-- **Descrição**: Atualiza os dados de um voto pelo ID.  
+- **URL**: `/assembleia/api/public/v1/votoMongodbEntity`  
+- **Descrição**: Atualiza os dados de um votoMongodbEntity pelo ID.  
 - **Corpo**: `VotoUpdateDTO`  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados atualizados do voto.  
+  - `200 OK`: Retorna os dados atualizados do votoMongodbEntity.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Voto não encontrado.  
 
 #### 4. Buscar Todos os Votos  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/voto`  
+- **URL**: `/assembleia/api/public/v1/votoMongodbEntity`  
 - **Descrição**: Retorna uma lista de todos os votos cadastrados.  
 - **Respostas**:  
   - `200 OK`: Lista de votos.  
 
 #### 5. Deletar Voto  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/public/v1/voto/{id}`  
-- **Descrição**: Remove um voto pelo ID.  
+- **URL**: `/assembleia/api/public/v1/votoMongodbEntity/{id}`  
+- **Descrição**: Remove um votoMongodbEntity pelo ID.  
 - **Respostas**:  
   - `204 NO CONTENT`: Voto deletado com sucesso.  
   - `404 NOT FOUND`: Voto não encontrado.  
 
 #### 6. Zerar Collection de Votos (Apenas para Testes)  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/private/v1/voto`  
+- **URL**: `/assembleia/api/private/v1/votoMongodbEntity`  
 - **Descrição**: Deleta todos os registros de votos.  
 - **Respostas**:  
   - `204 NO CONTENT`: Coleção zerada.  
@@ -233,9 +233,9 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 #### 1. Buscar Resultado por Pauta ID  
 - **Método**: `GET`  
 - **URL**: `/assembleia/api/public/v1/resultado/{idPauta}`  
-- **Descrição**: Busca o resultado de uma pauta pelo ID.  
+- **Descrição**: Busca o resultado de uma pautaMongodbEntity pelo ID.  
 - **Respostas**:  
-  - `200 OK`: Retorna o resultado da pauta.  
+  - `200 OK`: Retorna o resultado da pautaMongodbEntity.  
   - `404 NOT FOUND`: Resultado não encontrado.  
 
 #### 2. Listar Todos os Resultados  
@@ -336,9 +336,9 @@ Cada grupo contém testes individuais que verificam o comportamento da API em di
 O ambiente do Postman contém as seguintes variáveis:
 
 - base_url: a URL base da API
-- eleitor_id: ID de um eleitor existente
-- pauta_id: ID de uma pauta existente
-- voto_id: ID de um voto existente
+- eleitor_id: ID de um eleitorMongodbEntity existente
+- pauta_id: ID de uma pautaMongodbEntity existente
+- voto_id: ID de um votoMongodbEntity existente
 
 Certifique-se de que essas variáveis estejam configuradas corretamente de acordo com o seu ambiente de teste.
 
@@ -350,6 +350,44 @@ Certifique-se de que essas variáveis estejam configuradas corretamente de acord
 - Considere adicionar seções sobre como gerar relatórios ou integrar os testes a um pipeline de CI/CD, se aplicável. 
 
 ## Arquitetura
+
+Esta aplicação foi atualizada para utilizar os conceitos da Arquitetura Hexagonal
+
+
+### Descrição da estrutura de Pacotes
+
+- **adapters**: Adaptadores para comunicação entre diferentes sistemas e a aplicação.
+  - **inbound**: Adaptadores de entrada da aplicação.
+    - **controllers**: Implementações de interfaces que gerenciam as requisições e respostas.
+  - **outbound**: Adaptadores de saída da aplicação.
+    - **databaseentities**: Entidades que representam o domínio com recursos integrados para a persistencia dos dados no banco de dados.
+    - **repositories**: Implementações de interfaces gerenciam o acesso a dados.
+
+- **application**: Contém a lógica de negócios, serviços e portas para comunicação na aplicação.
+  - **ports**: Interfaces que definem os contratos de comunicação.
+    - **in**: Interfaces que definem o que pode ser solicitado.
+      - **api**: Interfaces de API expostas.
+      - **usecases**: Casos de uso da aplicação.
+    - **out**: Interfaces para comunicação com componentes externos.
+      - **persistenceMongodb**: Interfaces específicas para persistência no MongoDB.
+      - **repositories**: Interfaces de repositórios para acesso a dados.
+  - **services**: Classes que implementam a lógica de negócios.
+
+- **domain**: Representa o modelo de domínio, com entidades e objetos de transferência de dados.
+  - **dtos**: Objetos de transferência de dados.
+  - **entities**: Entidades do domínio.
+
+- **infrastructure**: Implementações específicas da infraestrutura, incluindo configuração e exceções.
+  - **config**: Configurações da aplicação.
+    - **exceptions**: Tratamento de exceções da configuração.
+    - **openapi**: Configuração relacionada ao OpenAPI.
+  - **exceptions**: Tratamento de exceções na infraestrutura.
+
+- **utils**: Funções utilitárias, como mapeadores e validadores.
+  - **assemblers**: Classes para montagem de entidades e DTOs.
+  - **enums**: Enumerações usadas no projeto.
+  - **mappers**: Mapeamento entre entidades e DTOs.
+  - **validators**: Validações de dados.
 
 ## Autenticacao
 
