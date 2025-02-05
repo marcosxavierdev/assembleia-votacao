@@ -56,7 +56,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 ## Endpoints
 
-### Contexto: Eleitor  
+### Contexto:Eleitor  
 
 #### 1. Buscar Eleitor por ID  
 - **Método**: `GET`  
@@ -116,7 +116,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 - **Respostas**:  
   - `204 NO CONTENT`: Coleção zerada.  
 ---  
-### Contexto: Pauta  
+### Contexto:Pauta  
 
 #### 1. Buscar Pauta por ID  
 - **Método**: `GET`  
@@ -176,7 +176,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
   - `200 OK`: Retorna os dados da pauta encerrada.  
   - `404 NOT FOUND`: Pauta não encontrada.  
 ---  
-### Contexto: Voto  
+### Contexto:Voto  
 
 #### 1. Buscar Voto por ID  
 - **Método**: `GET`  
@@ -228,7 +228,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 - **Respostas**:  
   - `204 NO CONTENT`: Coleção zerada.  
 ---  
-### Contexto: Resultado  
+### Contexto:Resultado  
 
 #### 1. Buscar Resultado por Pauta ID  
 - **Método**: `GET`  
@@ -252,22 +252,13 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 Este tópico fornece instruções sobre como executar os testes funcionais para a API de Gestão de Votação usando o Postman.  
 
-## Conteúdo  
-
-- [Requisitos](#requisitos)  
-- [Configuração do Ambiente](#configuração-do-ambiente)  
-- [Executando os Testes Funcionais](#executando-os-testes-funcionais)  
-- [Estrutura da Coleção do Postman](#estrutura-da-coleção-do-postman)  
-- [Estrutura do Ambiente do Postman](#estrutura-do-ambiente-do-postman)  
-- [Contribuições](#contribuições)  
-
-## Requisitos  
+### Requisitos  
 
 Antes de executar os testes, certifique-se de ter as seguintes ferramentas instaladas:  
 
 - Postman  
 
-## Configuração do Ambiente  
+### Configuração do Ambiente  
 
 1. **Clone o repositório (via terminal/bash)**:  
 
@@ -297,7 +288,7 @@ Vá em "Import" no Postman e selecione os arquivos da coleção e do ambiente.
 Certifique-se de que a coleção e o ambiente estejam selecionados corretamente.
 
 
-5. **Executando os Testes Funcionais**
+### Executando os Testes Funcionais
 
 - Verifique se o ambiente correto está selecionado no Postman.
 - Selecione a coleção de testes funcionais no painel esquerdo.
