@@ -60,7 +60,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 1. Buscar Eleitor por ID  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity/{id}`  
+- **URL**: `/assembleia/api/public/v1/eleitor/{id}`  
 - **Descrição**: Busca um eleitorMongodbEntity pelo ID.  
 - **Respostas**:  
   - `200 OK`: Retorna os dados do eleitorMongodbEntity.  
@@ -68,7 +68,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 2. Buscar Eleitor por CPF  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity/byCPF/{cpf}`  
+- **URL**: `/assembleia/api/public/v1/eleitor/byCPF/{cpf}`  
 - **Descrição**: Busca um eleitorMongodbEntity pelo CPF.  
 - **Respostas**:  
   - `200 OK`: Retorna os dados do eleitorMongodbEntity.  
@@ -76,7 +76,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 3. Criar Eleitor  
 - **Método**: `POST`  
-- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity`  
+- **URL**: `/assembleia/api/public/v1/eleitor`  
 - **Descrição**: Cadastra um novo eleitorMongodbEntity.  
 - **Corpo**: `EleitorRequestDTO`  
 - **Respostas**:  
@@ -86,7 +86,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 4. Atualizar Eleitor  
 - **Método**: `PUT`  
-- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity`  
+- **URL**: `/assembleia/api/public/v1/eleitor`  
 - **Descrição**: Atualiza os dados de um eleitorMongodbEntity pelo ID.  
 - **Corpo**: `EleitorUpdateDTO`  
 - **Respostas**:  
@@ -96,14 +96,14 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 5. Buscar Todos os Eleitores  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity`  
+- **URL**: `/assembleia/api/public/v1/eleitor`  
 - **Descrição**: Retorna uma lista de todos os eleitores cadastrados.  
 - **Respostas**:  
   - `200 OK`: Lista de eleitores.  
 
 #### 6. Deletar Eleitor  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/public/v1/eleitorMongodbEntity/{id}`  
+- **URL**: `/assembleia/api/public/v1/eleitor/{id}`  
 - **Descrição**: Remove um eleitorMongodbEntity pelo ID.  
 - **Respostas**:  
   - `204 NO CONTENT`: Eleitor deletado com sucesso.  
@@ -111,7 +111,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 7. Zerar Collection de Eleitores (Apenas para Testes)  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/private/v1/eleitorMongodbEntity`  
+- **URL**: `/assembleia/api/private/v1/eleitor`  
 - **Descrição**: Deleta todos os registros de eleitores.  
 - **Respostas**:  
   - `204 NO CONTENT`: Coleção zerada.  
@@ -120,7 +120,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 1. Buscar Pauta por ID  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity/{id}`  
+- **URL**: `/assembleia/api/public/v1/pauta/{id}`  
 - **Descrição**: Busca uma pautaMongodbEntity pelo ID.  
 - **Respostas**:  
   - `200 OK`: Retorna os dados da pautaMongodbEntity.  
@@ -128,7 +128,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 2. Criar Pauta  
 - **Método**: `POST`  
-- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity`  
+- **URL**: `/assembleia/api/public/v1/pauta`  
 - **Descrição**: Cria uma nova pautaMongodbEntity.  
 - **Corpo**: `PautaRequestDTO`  
 - **Respostas**:  
@@ -138,7 +138,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 3. Atualizar Pauta  
 - **Método**: `PUT`  
-- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity`  
+- **URL**: `/assembleia/api/public/v1/pauta`  
 - **Descrição**: Atualiza uma pautaMongodbEntity pelo ID.  
 - **Corpo**: `PautaUpdateDTO`  
 - **Respostas**:  
@@ -148,14 +148,14 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 4. Buscar Todas as Pautas  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity`  
+- **URL**: `/assembleia/api/public/v1/pauta`  
 - **Descrição**: Retorna uma lista de todas as pautas cadastradas.  
 - **Respostas**:  
   - `200 OK`: Lista de pautas.  
 
 #### 5. Deletar Pauta  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity/{id}`  
+- **URL**: `/assembleia/api/public/v1/pauta/{id}`  
 - **Descrição**: Remove uma pautaMongodbEntity pelo ID.  
 - **Respostas**:  
   - `204 NO CONTENT`: Pauta deletada com sucesso.  
@@ -163,14 +163,14 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 6. Zerar Collection de Pautas (Apenas para Testes)  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/private/v1/pautaMongodbEntity`  
+- **URL**: `/assembleia/api/private/v1/pauta`  
 - **Descrição**: Deleta todos os registros de pautas.  
 - **Respostas**:  
   - `204 NO CONTENT`: Coleção zerada.  
 
 #### 7. Encerrar Pauta  
 - **Método**: `POST`  
-- **URL**: `/assembleia/api/public/v1/pautaMongodbEntity/{id}/encerrar`  
+- **URL**: `/assembleia/api/public/v1/pauta/{id}/encerrar`  
 - **Descrição**: Encerra uma pautaMongodbEntity pelo ID.  
 - **Respostas**:  
   - `200 OK`: Retorna os dados da pautaMongodbEntity encerrada.  
@@ -180,7 +180,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 1. Buscar Voto por ID  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/votoMongodbEntity/{id}`  
+- **URL**: `/assembleia/api/public/v1/voto/{id}`  
 - **Descrição**: Busca um votoMongodbEntity pelo ID.  
 - **Respostas**:  
   - `200 OK`: Retorna os dados do votoMongodbEntity.  
@@ -188,7 +188,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 2. Criar Voto  
 - **Método**: `POST`  
-- **URL**: `/assembleia/api/public/v1/votoMongodbEntity`  
+- **URL**: `/assembleia/api/public/v1/voto`  
 - **Descrição**: Cadastra um novo votoMongodbEntity.  
 - **Corpo**: `VotoRequestDTO`  
 - **Respostas**:  
@@ -198,7 +198,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 3. Atualizar Voto  
 - **Método**: `PUT`  
-- **URL**: `/assembleia/api/public/v1/votoMongodbEntity`  
+- **URL**: `/assembleia/api/public/v1/voto`  
 - **Descrição**: Atualiza os dados de um votoMongodbEntity pelo ID.  
 - **Corpo**: `VotoUpdateDTO`  
 - **Respostas**:  
@@ -208,14 +208,14 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 4. Buscar Todos os Votos  
 - **Método**: `GET`  
-- **URL**: `/assembleia/api/public/v1/votoMongodbEntity`  
+- **URL**: `/assembleia/api/public/v1/voto`  
 - **Descrição**: Retorna uma lista de todos os votos cadastrados.  
 - **Respostas**:  
   - `200 OK`: Lista de votos.  
 
 #### 5. Deletar Voto  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/public/v1/votoMongodbEntity/{id}`  
+- **URL**: `/assembleia/api/public/v1/voto/{id}`  
 - **Descrição**: Remove um votoMongodbEntity pelo ID.  
 - **Respostas**:  
   - `204 NO CONTENT`: Voto deletado com sucesso.  
@@ -223,7 +223,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 
 #### 6. Zerar Collection de Votos (Apenas para Testes)  
 - **Método**: `DELETE`  
-- **URL**: `/assembleia/api/private/v1/votoMongodbEntity`  
+- **URL**: `/assembleia/api/private/v1/voto`  
 - **Descrição**: Deleta todos os registros de votos.  
 - **Respostas**:  
   - `204 NO CONTENT`: Coleção zerada.  
