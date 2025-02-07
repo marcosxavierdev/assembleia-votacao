@@ -1,8 +1,7 @@
 package com.marcosxavier.assembleia.adapters.outbound.repositories;
 
-import com.marcosxavier.assembleia.adapters.outbound.databaseentities.EleitorMongodbEntity;
+import com.marcosxavier.assembleia.adapters.outbound.databaseentities.Eleitor;
 import com.marcosxavier.assembleia.application.ports.out.repositories.EleitorRepository;
-import com.marcosxavier.assembleia.domain.dto.eleitor.EleitorResponseDTO;
 import com.marcosxavier.assembleia.application.ports.out.persistenceMongodb.EleitorMongoDBRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -20,13 +19,13 @@ public class EleitorRepositoryImpl implements EleitorRepository {
     private final EleitorMongoDBRepository repository;
 
     @Override
-    public Optional<EleitorMongodbEntity> buscaPorId(String id) {
+    public Optional<Eleitor> buscaPorId(String id) {
         log.info("EleitorRepositoryImpl - buscaPorId: {}", id);
         return repository.findById(id);
     }
 
     @Override
-    public Optional<EleitorMongodbEntity> buscaPorCpf(String cpf) {
+    public Optional<Eleitor> buscaPorCpf(String cpf) {
         log.info("EleitorRepositoryImpl - buscaPorCpf: {}", cpf);
         return repository.findByCpf(cpf);
     }
@@ -38,31 +37,31 @@ public class EleitorRepositoryImpl implements EleitorRepository {
     }
 
     @Override
-    public List<EleitorResponseDTO> buscaLista() {
+    public List<Eleitor> buscaLista() {
         log.info("EleitorRepositoryImpl - buscaLista");
         return repository.findAll().stream()
-                .map(EleitorResponseDTO::new)
+                .map(Eleitor::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public void deleta(EleitorMongodbEntity eleitorMongodbEntity) {
+    public void deleta(Eleitor eleitor) {
         log.info("EleitorRepositoryImpl - deleta");
-        repository.delete(eleitorMongodbEntity);
+        repository.delete(eleitor);
     }
 
     @Override
-    public void salva(EleitorMongodbEntity eleitorMongodbEntity) {
+    public void salva(Eleitor eleitor) {
         log.info("EleitorRepositoryImpl - salva");
-        repository.save(eleitorMongodbEntity);
+        repository.save(eleitor);
     }
 
     @Override
-    public List<EleitorMongodbEntity> buscaListaPorCpf(String cpf) {
+    public List<Eleitor> buscaListaPorCpf(String cpf) {
         log.info("EleitorRepositoryImpl - buscaListaPorCpf: {}", cpf);
         return repository.findAll().stream()
                 .filter(eleitor -> eleitor.getCpf().equals(cpf))
-                .map(EleitorMongodbEntity::new)
+                .map(Eleitor::new)
                 .collect(Collectors.toList());
     }
 }
