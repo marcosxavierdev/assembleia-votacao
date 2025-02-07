@@ -11,6 +11,7 @@ Este projeto é uma API REST para gerenciamento de sessões de votação para co
 - **Spring Web**  
 - **Spring Data MongoDB**  
 - **Spring Validation**  
+- **Spring Hateoas**  
 - **Lombok**  
 - **MapStruct**  
 - **SpringDoc OpenAPI**  
@@ -388,6 +389,11 @@ Esta aplicação foi atualizada para utilizar os conceitos da Arquitetura Hexago
   - **enums**: Enumerações usadas no projeto.
   - **mappers**: Mapeamento entre entidades e DTOs.
   - **validators**: Validações de dados.
+
+## HATEOAS
+
+Esta aplicação possui a implementação HATEOAS, que garante que cada resposta JSON contenha links que permitem a navegação para outros recursos relacionados.
+
 
 ## Autenticacao
 
