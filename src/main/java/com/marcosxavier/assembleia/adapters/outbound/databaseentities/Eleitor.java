@@ -18,8 +18,8 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor()
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Document(collection = "EleitorMongodbEntity")
-public class EleitorMongodbEntity {
+@Document(collection = "Eleitor")
+public class Eleitor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,21 +32,21 @@ public class EleitorMongodbEntity {
     @Schema(name="status", description="status da situação do eleitor", example = "ABLE_TO_VOTE ou UNABLE_TO_VOTE")
     private EleitorStatusEnum status;
 
-    public EleitorMongodbEntity(EleitorRequestDTO request) {
+    public Eleitor(EleitorRequestDTO request) {
         this.id = UUID.randomUUID().toString();
         this.cpf = request.getCpf();
         this.status = request.getStatus();
     }
 
-    public EleitorMongodbEntity(EleitorUpdateDTO update) {
+    public Eleitor(EleitorUpdateDTO update) {
         this.id = update.getId();
         this.cpf = update.getCpf();
         this.status = update.getStatus();
     }
 
-    public EleitorMongodbEntity(EleitorMongodbEntity eleitorMongodbEntity) {
-        this.id = eleitorMongodbEntity.getId();
-        this.cpf = eleitorMongodbEntity.getCpf();
-        this.status = eleitorMongodbEntity.getStatus();
+    public Eleitor(Eleitor eleitor) {
+        this.id = eleitor.getId();
+        this.cpf = eleitor.getCpf();
+        this.status = eleitor.getStatus();
     }
 }

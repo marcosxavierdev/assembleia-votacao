@@ -1,5 +1,6 @@
 package com.marcosxavier.assembleia.application.ports.in.api;
 
+import com.marcosxavier.assembleia.domain.dto.eleitor.CustomEleitorCollectionDTO;
 import com.marcosxavier.assembleia.domain.dto.eleitor.EleitorRequestDTO;
 import com.marcosxavier.assembleia.domain.dto.eleitor.EleitorResponseDTO;
 import com.marcosxavier.assembleia.domain.dto.eleitor.EleitorUpdateDTO;
@@ -11,9 +12,8 @@ import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public interface EleitorAPI {
@@ -62,7 +62,7 @@ public interface EleitorAPI {
             responses = {
                     @ApiResponse(responseCode = "200", description= "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EleitorResponseDTO.class))),
             })
-    List<EleitorResponseDTO> buscaTodosEleitores();
+    CustomEleitorCollectionDTO<EleitorResponseDTO> buscaTodosEleitores();
 
     @DeleteMapping(value = "/public/v1/eleitor/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
@@ -71,7 +71,7 @@ public interface EleitorAPI {
                     @ApiResponse(responseCode = "204", description= "NO CONTENT", content = @Content(mediaType = "application/json")),
                     @ApiResponse(responseCode = "404", description= "NOT FOUND", content = {@Content()})
             })
-    void deletaEleitor (@PathVariable String id);
+    ResponseEntity<Void> deletaEleitor (@PathVariable String id);
 
     @DeleteMapping(value = "/private/v1/eleitor")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
@@ -79,5 +79,5 @@ public interface EleitorAPI {
             responses = {
                     @ApiResponse(responseCode = "204", description= "NO CONTENT", content = @Content(mediaType = "application/json")),
             })
-    void zeraCollectionEleitor ();
+    ResponseEntity<Void> zeraCollectionEleitor ();
 }

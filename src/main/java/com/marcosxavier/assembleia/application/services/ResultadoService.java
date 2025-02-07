@@ -1,12 +1,11 @@
 package com.marcosxavier.assembleia.application.services;
 
-import com.marcosxavier.assembleia.adapters.outbound.databaseentities.PautaMongodbEntity;
+import com.marcosxavier.assembleia.adapters.outbound.databaseentities.Pauta;
 import com.marcosxavier.assembleia.application.ports.in.usecases.EleitorUsecase;
 import com.marcosxavier.assembleia.application.ports.in.usecases.PautaUsecase;
 import com.marcosxavier.assembleia.application.ports.in.usecases.ResultadoUsecase;
-import com.marcosxavier.assembleia.domain.dto.pauta.PautaResponseDTO;
 import com.marcosxavier.assembleia.utils.enums.PautaStatusEnum;
-import com.marcosxavier.assembleia.domain.dto.resultado.ResultadoDto;
+import com.marcosxavier.assembleia.domain.dto.resultado.ResultadoDTO;
 import com.marcosxavier.assembleia.utils.enums.ResultadoPautaEnum;
 import com.marcosxavier.assembleia.utils.enums.ResultadoStatusEnum;
 import com.marcosxavier.assembleia.application.ports.out.repositories.VotoRepository;
@@ -29,9 +28,9 @@ public class ResultadoService implements ResultadoUsecase {
     private final PautaUsecase pautaUsecase;
 
     @Override
-    public ResultadoDto buscaResultadoPorPauta(String idPauta) {
+    public ResultadoDTO buscaResultadoPorPauta(String idPauta) {
         log.info("[iniciando]ResultadoService - buscaResultadoPorPauta: {}", idPauta);
-        PautaResponseDTO pauta = pautaUsecase.buscaPorId(idPauta);
+        Pauta pauta = pautaUsecase.buscaPorId(idPauta);
         Long aprovacoes = votoRepository.contaVotosPorPautaAprovacao(idPauta, "SIM");
         Long reprovacoes = votoRepository.contaVotosPorPautaAprovacao(idPauta, "NAO");
 
@@ -47,7 +46,7 @@ public class ResultadoService implements ResultadoUsecase {
         ResultadoStatusEnum status = pauta.getStatus().equals(PautaStatusEnum.OPEN) ?
                 ResultadoStatusEnum.IN_PROGRESS : ResultadoStatusEnum.FINISHED;
 
-        ResultadoDto resultadoDto = new ResultadoDto();
+        ResultadoDTO resultadoDto = new ResultadoDTO();
         resultadoDto.setPauta(pauta);
         resultadoDto.setAprovacoes(aprovacoes);
         resultadoDto.setReprovacoes(reprovacoes);
@@ -59,12 +58,12 @@ public class ResultadoService implements ResultadoUsecase {
     }
 
     @Override
-    public List<ResultadoDto> listaResultados() {
+    public List<ResultadoDTO> listaResultados() {
         log.info("[iniciando]ResultadoService - listaResultados");
-        List<PautaResponseDTO> todasPautas = pautaUsecase.buscaTodasPautas();
+        List<Pauta> todasPautas = pautaUsecase.buscaTodasPautas();
 
-        List<PautaMongodbEntity> listaPautaMongodbEntities = todasPautas.stream()
-                .map(pautaResponseDTO -> new PautaMongodbEntity(
+        List<Pauta> listaPautaMongodbEntities = todasPautas.stream()
+                .map(pautaResponseDTO -> new Pauta(
                         pautaResponseDTO.getId(),
                         pautaResponseDTO.getTempoMinutos(),
                         pautaResponseDTO.getAssunto(),
@@ -72,9 +71,9 @@ public class ResultadoService implements ResultadoUsecase {
                 ))
                 .collect(Collectors.toList());
 
-        List<ResultadoDto> listaResultados = new ArrayList<>();
-        for (PautaMongodbEntity pautaMongodbEntity : listaPautaMongodbEntities) {
-            listaResultados.add(buscaResultadoPorPauta(pautaMongodbEntity.getId()));
+        List<ResultadoDTO> listaResultados = new ArrayList<>();
+        for (Pauta pauta : listaPautaMongodbEntities) {
+            listaResultados.add(buscaResultadoPorPauta(pauta.getId()));
         }
         log.info("[finalizando]ResultadoService - listaResultados");
         return listaResultados;

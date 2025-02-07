@@ -1,6 +1,6 @@
 package com.marcosxavier.assembleia.application.services;
 
-import com.marcosxavier.assembleia.adapters.outbound.databaseentities.EleitorMongodbEntity;
+import com.marcosxavier.assembleia.adapters.outbound.databaseentities.Eleitor;
 import com.marcosxavier.assembleia.application.ports.in.usecases.EleitorUsecase;
 import com.marcosxavier.assembleia.utils.assemblers.EleitorAssembler;
 import com.marcosxavier.assembleia.utils.mappers.EleitorMapper;
@@ -28,9 +28,9 @@ public class EleitorService implements EleitorUsecase {
     @Autowired
     CPFValidationService validadorCPF;
 
-    public EleitorMongodbEntity buscaEleitorPorId(String id) {
+    public Eleitor buscaEleitorPorId(String id) {
         log.info("EleitorService - buscaEleitorPorId: {}", id);
-        return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "EleitorMongodbEntity não encontrado!"));
+        return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Eleitor não encontrado!"));
     }
 
     @Override
@@ -40,13 +40,13 @@ public class EleitorService implements EleitorUsecase {
         log.info("[finalizando]EleitorService - zeraCollectionEleitor");
     }
 
-    public EleitorMongodbEntity buscaEleitorPorCpf(String cpf) {
+    public Eleitor buscaEleitorPorCpf(String cpf) {
         log.info("EleitorService - buscaEleitorPorCpf: {}", cpf);
-        return repository.buscaPorCpf(cpf).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "EleitorMongodbEntity não encontrado!"));
+        return repository.buscaPorCpf(cpf).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Eleitor não encontrado!"));
     }
 
     @Override
-    public List<EleitorResponseDTO> buscaTodosEleitores() {
+    public List<Eleitor> buscaTodosEleitores() {
         log.info("EleitorService - buscaTodosEleitores");
         return repository.buscaLista();
     }
@@ -54,56 +54,56 @@ public class EleitorService implements EleitorUsecase {
     @Override
     public void deletaEleitor(String id) {
         log.info("[iniciando]EleitorService - deletaEleitor: {}", id);
-        EleitorMongodbEntity eleitorMongodbEntity = buscaEleitorPorId(id);
-        repository.deleta(eleitorMongodbEntity);
+        Eleitor eleitor = buscaEleitorPorId(id);
+        repository.deleta(eleitor);
         log.info("[finalizando]EleitorService - deletaEleitor: {}", id);
     }
 
     @Override
-    public EleitorResponseDTO buscaPorId(String id) {
+    public Eleitor buscaPorId(String id) {
         log.info("[iniciando]EleitorService - buscaPorId: {}", id);
         var eleitor = buscaEleitorPorId(id);
         log.info("[finalizando]EleitorService - buscaPorId: {}", id);
-        return EleitorMapper.INSTANCE.toEleitorResponseDTO(eleitor);
+        return eleitor;
     }
 
     @Override
-    public EleitorResponseDTO buscaPorCpf(String cpf) {
+    public Eleitor buscaPorCpf(String cpf) {
         log.info("[iniciando]EleitorService - buscaPorCpf: {}", cpf);
         var eleitor = buscaEleitorPorCpf(cpf);
         var eleitorMapper= new EleitorAssembler();
         log.info("[finalizando]EleitorService - buscaPorCpf: {}", cpf);
-        return eleitorMapper.toResponseDTO(eleitor);
+        return eleitor;
     }
 
     @Override
-    public EleitorResponseDTO criaEleitor(EleitorRequestDTO request) {
+    public Eleitor criaEleitor(EleitorRequestDTO request) {
         log.info("[iniciando]EleitorService - criaEleitor");
         validaEleitor(request.getCpf());
-        var eleitor = new EleitorMongodbEntity(request);
+        var eleitor = new Eleitor(request);
         eleitor.setStatus(EleitorStatusEnum.ABLE_TO_VOTE);
         repository.salva(eleitor);
         log.info("[finalizando]EleitorService - criaEleitor");
-        return new EleitorResponseDTO(eleitor);
+        return eleitor;
     }
 
     @Override
-    public EleitorResponseDTO atualizaEleitor(EleitorUpdateDTO update) {
+    public Eleitor atualizaEleitor(EleitorUpdateDTO update) {
         log.info("[iniciando]EleitorService - atualizaEleitor");
         validaEleitor(update.getCpf());
-        EleitorMongodbEntity eleitorMongodbEntity = buscaEleitorPorId(update.getId());
+        Eleitor eleitor = buscaEleitorPorId(update.getId());
         if (update.getId() != null) {
-            eleitorMongodbEntity.setId(update.getId());
+            eleitor.setId(update.getId());
         }
         if (update.getCpf() != null) {
-            eleitorMongodbEntity.setCpf(update.getCpf());
+            eleitor.setCpf(update.getCpf());
         }
         if (update.getStatus() != null) {
-            eleitorMongodbEntity.setStatus(update.getStatus());
+            eleitor.setStatus(update.getStatus());
         }
-        repository.salva(eleitorMongodbEntity);
+        repository.salva(eleitor);
         log.info("[finalizando]EleitorService - atualizaEleitor");
-        return new EleitorResponseDTO(eleitorMongodbEntity);
+        return eleitor;
     }
 
     private void validaEleitor(String cpf) {

@@ -1,5 +1,6 @@
 package com.marcosxavier.assembleia.adapters.outbound.databaseentities;
 
+import com.marcosxavier.assembleia.domain.dto.voto.VotoUpdateDTO;
 import com.marcosxavier.assembleia.utils.enums.AprovacaoEnum;
 import com.marcosxavier.assembleia.domain.dto.voto.VotoRequestDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -16,8 +17,8 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Document(collection = "VotoMongodbEntity")
-public class VotoMongodbEntity {
+@Document(collection = "Voto")
+public class Voto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,13 +31,27 @@ public class VotoMongodbEntity {
     @Schema(name="idEleitor", description="id do eleitor", example = "8f5f19f5-8fcb-450a-acb9-8719aec42058")
     private String idEleitor;
 
-    @Schema(name="aprovacao", description="Aprovacao do VotoMongodbEntity", example = "SIM ou NAO")
+    @Schema(name="aprovacao", description="Aprovacao do Voto", example = "SIM ou NAO")
     private AprovacaoEnum aprovacao;
 
-    public VotoMongodbEntity(VotoRequestDTO request) {
+    public Voto(VotoRequestDTO request) {
         this.id = UUID.randomUUID().toString();
         this.idPauta = request.getIdPauta();
         this.idEleitor = request.getIdEleitor();
         this.aprovacao = request.getAprovacao();
+    }
+
+    public Voto(VotoUpdateDTO request) {
+        this.id = request.getIdEleitor();
+        this.idPauta = request.getIdPauta();
+        this.idEleitor = request.getIdEleitor();
+        this.aprovacao = request.getAprovacao();
+    }
+
+    public Voto(Voto voto) {
+        this.id = voto.getId();
+        this.idPauta = voto.getIdPauta();
+        this.idEleitor = voto.getIdEleitor();
+        this.aprovacao = voto.getAprovacao();
     }
 }

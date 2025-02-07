@@ -1,8 +1,7 @@
 package com.marcosxavier.assembleia.adapters.outbound.repositories;
 
-import com.marcosxavier.assembleia.adapters.outbound.databaseentities.VotoMongodbEntity;
+import com.marcosxavier.assembleia.adapters.outbound.databaseentities.Voto;
 import com.marcosxavier.assembleia.application.ports.out.repositories.VotoRepository;
-import com.marcosxavier.assembleia.domain.dto.voto.VotoResponseDTO;
 import com.marcosxavier.assembleia.application.ports.out.persistenceMongodb.VotoMongoDBRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -20,33 +19,33 @@ public class VotoRepositoryImpl implements VotoRepository {
     private final VotoMongoDBRepository repository;
 
     @Override
-    public Optional<VotoMongodbEntity> buscaPorId(String id) {
+    public Optional<Voto> buscaPorId(String id) {
         log.info("VotoRepositoryImpl - buscaPorId: {}", id);
         return repository.findById(id);
     }
 
     @Override
-    public List<VotoResponseDTO> buscaLista() {
+    public List<Voto> buscaLista() {
         log.info("VotoRepositoryImpl - buscaLista");
         return repository.findAll().stream()
-                .map(VotoResponseDTO::new)
+                .map(Voto::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public void deleta(VotoMongodbEntity votoMongodbEntity) {
+    public void deleta(Voto voto) {
         log.info("VotoRepositoryImpl - deleta");
-        repository.delete(votoMongodbEntity);
+        repository.delete(voto);
     }
 
     @Override
-    public void salva(VotoMongodbEntity votoMongodbEntity) {
+    public void salva(Voto voto) {
         log.info("VotoRepositoryImpl - salva");
-        repository.save(votoMongodbEntity);
+        repository.save(voto);
     }
 
     @Override
-    public List<VotoMongodbEntity> buscaTodasVotosPorIdPautaEIdEleitor(String idPauta, String idEleitor) {
+    public List<Voto> buscaTodasVotosPorIdPautaEIdEleitor(String idPauta, String idEleitor) {
         log.info("VotoRepositoryImpl - buscaTodasVotosPorIdPautaEIdEleitor: {} e {}", idPauta, idEleitor);
         return repository.findByIdPautaAndIdEleitor(idPauta,idEleitor);
     }

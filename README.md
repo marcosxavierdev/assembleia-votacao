@@ -61,36 +61,36 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 #### 1. Buscar Eleitor por ID  
 - **Método**: `GET`  
 - **URL**: `/assembleia/api/public/v1/eleitor/{id}`  
-- **Descrição**: Busca um eleitorMongodbEntity pelo ID.  
+- **Descrição**: Busca um eleitor pelo ID.  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados do eleitorMongodbEntity.  
+  - `200 OK`: Retorna os dados do eleitor.  
   - `404 NOT FOUND`: Eleitor não encontrado.  
 
 #### 2. Buscar Eleitor por CPF  
 - **Método**: `GET`  
 - **URL**: `/assembleia/api/public/v1/eleitor/byCPF/{cpf}`  
-- **Descrição**: Busca um eleitorMongodbEntity pelo CPF.  
+- **Descrição**: Busca um eleitor pelo CPF.  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados do eleitorMongodbEntity.  
+  - `200 OK`: Retorna os dados do eleitor.  
   - `404 NOT FOUND`: Eleitor não encontrado.  
 
 #### 3. Criar Eleitor  
 - **Método**: `POST`  
 - **URL**: `/assembleia/api/public/v1/eleitor`  
-- **Descrição**: Cadastra um novo eleitorMongodbEntity.  
+- **Descrição**: Cadastra um novo eleitor.  
 - **Corpo**: `EleitorRequestDTO`  
 - **Respostas**:  
-  - `201 CREATED`: Retorna os dados do eleitorMongodbEntity criado.  
+  - `201 CREATED`: Retorna os dados do eleitor criado.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Recurso não encontrado.  
 
 #### 4. Atualizar Eleitor  
 - **Método**: `PUT`  
 - **URL**: `/assembleia/api/public/v1/eleitor`  
-- **Descrição**: Atualiza os dados de um eleitorMongodbEntity pelo ID.  
+- **Descrição**: Atualiza os dados de um eleitor pelo ID.  
 - **Corpo**: `EleitorUpdateDTO`  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados atualizados do eleitorMongodbEntity.  
+  - `200 OK`: Retorna os dados atualizados do eleitor.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Eleitor não encontrado.  
 
@@ -104,7 +104,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 #### 6. Deletar Eleitor  
 - **Método**: `DELETE`  
 - **URL**: `/assembleia/api/public/v1/eleitor/{id}`  
-- **Descrição**: Remove um eleitorMongodbEntity pelo ID.  
+- **Descrição**: Remove um eleitor pelo ID.  
 - **Respostas**:  
   - `204 NO CONTENT`: Eleitor deletado com sucesso.  
   - `404 NOT FOUND`: Eleitor não encontrado.  
@@ -121,28 +121,28 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 #### 1. Buscar Pauta por ID  
 - **Método**: `GET`  
 - **URL**: `/assembleia/api/public/v1/pauta/{id}`  
-- **Descrição**: Busca uma pautaMongodbEntity pelo ID.  
+- **Descrição**: Busca uma pauta pelo ID.  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados da pautaMongodbEntity.  
+  - `200 OK`: Retorna os dados da pauta.  
   - `404 NOT FOUND`: Pauta não encontrada.  
 
 #### 2. Criar Pauta  
 - **Método**: `POST`  
 - **URL**: `/assembleia/api/public/v1/pauta`  
-- **Descrição**: Cria uma nova pautaMongodbEntity.  
+- **Descrição**: Cria uma nova pauta.  
 - **Corpo**: `PautaRequestDTO`  
 - **Respostas**:  
-  - `201 CREATED`: Retorna os dados da pautaMongodbEntity criada.  
+  - `201 CREATED`: Retorna os dados da pauta criada.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Recurso não encontrado.  
 
 #### 3. Atualizar Pauta  
 - **Método**: `PUT`  
 - **URL**: `/assembleia/api/public/v1/pauta`  
-- **Descrição**: Atualiza uma pautaMongodbEntity pelo ID.  
+- **Descrição**: Atualiza uma pauta pelo ID.  
 - **Corpo**: `PautaUpdateDTO`  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados atualizados da pautaMongodbEntity.  
+  - `200 OK`: Retorna os dados atualizados da pauta.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Pauta não encontrada.  
 
@@ -156,7 +156,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 #### 5. Deletar Pauta  
 - **Método**: `DELETE`  
 - **URL**: `/assembleia/api/public/v1/pauta/{id}`  
-- **Descrição**: Remove uma pautaMongodbEntity pelo ID.  
+- **Descrição**: Remove uma pauta pelo ID.  
 - **Respostas**:  
   - `204 NO CONTENT`: Pauta deletada com sucesso.  
   - `404 NOT FOUND`: Pauta não encontrada.  
@@ -171,9 +171,9 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 #### 7. Encerrar Pauta  
 - **Método**: `POST`  
 - **URL**: `/assembleia/api/public/v1/pauta/{id}/encerrar`  
-- **Descrição**: Encerra uma pautaMongodbEntity pelo ID.  
+- **Descrição**: Encerra uma pauta pelo ID.  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados da pautaMongodbEntity encerrada.  
+  - `200 OK`: Retorna os dados da pauta encerrada.  
   - `404 NOT FOUND`: Pauta não encontrada.  
 ---  
 ### Contexto:Voto  
@@ -181,28 +181,28 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 #### 1. Buscar Voto por ID  
 - **Método**: `GET`  
 - **URL**: `/assembleia/api/public/v1/voto/{id}`  
-- **Descrição**: Busca um votoMongodbEntity pelo ID.  
+- **Descrição**: Busca um voto pelo ID.  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados do votoMongodbEntity.  
+  - `200 OK`: Retorna os dados do voto.  
   - `404 NOT FOUND`: Voto não encontrado.  
 
 #### 2. Criar Voto  
 - **Método**: `POST`  
 - **URL**: `/assembleia/api/public/v1/voto`  
-- **Descrição**: Cadastra um novo votoMongodbEntity.  
+- **Descrição**: Cadastra um novo voto.  
 - **Corpo**: `VotoRequestDTO`  
 - **Respostas**:  
-  - `201 CREATED`: Retorna os dados do votoMongodbEntity criado.  
+  - `201 CREATED`: Retorna os dados do voto criado.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Recurso não encontrado.  
 
 #### 3. Atualizar Voto  
 - **Método**: `PUT`  
 - **URL**: `/assembleia/api/public/v1/voto`  
-- **Descrição**: Atualiza os dados de um votoMongodbEntity pelo ID.  
+- **Descrição**: Atualiza os dados de um voto pelo ID.  
 - **Corpo**: `VotoUpdateDTO`  
 - **Respostas**:  
-  - `200 OK`: Retorna os dados atualizados do votoMongodbEntity.  
+  - `200 OK`: Retorna os dados atualizados do voto.  
   - `400 BAD REQUEST`: Requisição inválida.  
   - `404 NOT FOUND`: Voto não encontrado.  
 
@@ -216,7 +216,7 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 #### 5. Deletar Voto  
 - **Método**: `DELETE`  
 - **URL**: `/assembleia/api/public/v1/voto/{id}`  
-- **Descrição**: Remove um votoMongodbEntity pelo ID.  
+- **Descrição**: Remove um voto pelo ID.  
 - **Respostas**:  
   - `204 NO CONTENT`: Voto deletado com sucesso.  
   - `404 NOT FOUND`: Voto não encontrado.  
@@ -233,9 +233,9 @@ A documentação da API é gerada automaticamente através do SpringDoc OpenAPI 
 #### 1. Buscar Resultado por Pauta ID  
 - **Método**: `GET`  
 - **URL**: `/assembleia/api/public/v1/resultado/{idPauta}`  
-- **Descrição**: Busca o resultado de uma pautaMongodbEntity pelo ID.  
+- **Descrição**: Busca o resultado de uma pauta pelo ID.  
 - **Respostas**:  
-  - `200 OK`: Retorna o resultado da pautaMongodbEntity.  
+  - `200 OK`: Retorna o resultado da pauta.  
   - `404 NOT FOUND`: Resultado não encontrado.  
 
 #### 2. Listar Todos os Resultados  
@@ -336,9 +336,9 @@ Cada grupo contém testes individuais que verificam o comportamento da API em di
 O ambiente do Postman contém as seguintes variáveis:
 
 - base_url: a URL base da API
-- eleitor_id: ID de um eleitorMongodbEntity existente
-- pauta_id: ID de uma pautaMongodbEntity existente
-- voto_id: ID de um votoMongodbEntity existente
+- eleitor_id: ID de um eleitor existente
+- pauta_id: ID de uma pauta existente
+- voto_id: ID de um voto existente
 
 Certifique-se de que essas variáveis estejam configuradas corretamente de acordo com o seu ambiente de teste.
 

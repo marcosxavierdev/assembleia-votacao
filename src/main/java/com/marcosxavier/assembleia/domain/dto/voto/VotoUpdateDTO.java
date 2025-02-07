@@ -26,6 +26,6 @@ public class VotoUpdateDTO {
     private String idEleitor;
 
     @NotNull
-    @Schema(name="aprovacao", description="Aprovacao do VotoMongodbEntity", example = "SIM ou NAO")
+    @Schema(name="aprovacao", description="Aprovacao do Voto", example = "SIM ou NAO")
     private AprovacaoEnum aprovacao;
 }

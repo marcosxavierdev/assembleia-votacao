@@ -1,6 +1,6 @@
 package com.marcosxavier.assembleia.application.services;
 
-import com.marcosxavier.assembleia.adapters.outbound.databaseentities.PautaMongodbEntity;
+import com.marcosxavier.assembleia.adapters.outbound.databaseentities.Pauta;
 import com.marcosxavier.assembleia.application.ports.in.usecases.PautaUsecase;
 import com.marcosxavier.assembleia.utils.mappers.PautaMapper;
 import com.marcosxavier.assembleia.domain.dto.pauta.PautaRequestDTO;
@@ -23,9 +23,9 @@ public class PautaService implements PautaUsecase {
 
     private final PautaRepository repository;
 
-    public PautaMongodbEntity buscaPautaPorId(String id) {
+    public Pauta buscaPautaPorId(String id) {
         log.info("PautaService - buscaEleitorPorId: {}", id);
-        return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "PautaMongodbEntity não encontrada!"));
+        return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pauta não encontrada!"));
     }
 
     @Override
@@ -36,49 +36,49 @@ public class PautaService implements PautaUsecase {
     }
 
     @Override
-    public PautaResponseDTO encerraPauta(String id) {
+    public Pauta encerraPauta(String id) {
         log.info("[iniciando]PautaService - encerraPauta: {}", id);
         var pauta = buscaPautaPorId(id);
         pauta.setStatus(PautaStatusEnum.CLOSED);
         repository.salva(pauta);
         log.info("[finalizando]PautaService - encerraPauta: {}", id);
-        return PautaMapper.INSTANCE.toPautaResponseDTO(pauta);
+        return pauta;
     }
 
     @Override
-    public PautaResponseDTO buscaPorId(String id) {
+    public Pauta buscaPorId(String id) {
         log.info("[iniciando]PautaService - buscaPorId: {}", id);
         var pauta = buscaPautaPorId(id);
         log.info("[finalizando]PautaService - buscaPorId: {}", id);
-        return PautaMapper.INSTANCE.toPautaResponseDTO(pauta);
+        return pauta;
     }
 
     @Override
-    public PautaResponseDTO criaPauta(PautaRequestDTO request) {
+    public Pauta criaPauta(PautaRequestDTO request) {
         log.info("[iniciando]PautaService - criaPauta");
-        var pauta = new PautaMongodbEntity(request);
+        var pauta = new Pauta(request);
         repository.salva(pauta);
         log.info("[iniciando]PautaService - criaPauta");
-        return new PautaResponseDTO(pauta);
+        return pauta;
     }
 
     @Override
-    public PautaResponseDTO atualizaPauta(PautaUpdateDTO update) {
+    public Pauta atualizaPauta(PautaUpdateDTO update) {
         log.info("[iniciando]PautaService - atualizaPauta");
-        PautaMongodbEntity pautaMongodbEntity = buscaPautaPorId(update.getId());
+        Pauta pauta = buscaPautaPorId(update.getId());
         if (update.getAssunto() != null) {
-            pautaMongodbEntity.setAssunto(update.getAssunto());
+            pauta.setAssunto(update.getAssunto());
         }
         if (update.getTempoMinutos() != null) {
-            pautaMongodbEntity.setTempoMinutos(update.getTempoMinutos());
+            pauta.setTempoMinutos(update.getTempoMinutos());
         }
-        repository.salva(pautaMongodbEntity);
+        repository.salva(pauta);
         log.info("[iniciando]PautaService - criaPauta");
-        return new PautaResponseDTO(pautaMongodbEntity);
+        return pauta;
     }
 
     @Override
-    public List<PautaResponseDTO> buscaTodasPautas() {
+    public List<Pauta> buscaTodasPautas() {
         log.info("PautaService - buscaTodasPautas");
         return repository.buscaLista();
     }
@@ -86,8 +86,8 @@ public class PautaService implements PautaUsecase {
     @Override
     public void deletaPauta(String id) {
         log.info("[iniciando]PautaService - deletaPauta: {}", id);
-        PautaMongodbEntity pautaMongodbEntity = buscaPautaPorId(id);
-        repository.deleta(pautaMongodbEntity);
+        Pauta pauta = buscaPautaPorId(id);
+        repository.deleta(pauta);
         log.info("[finalizando]PautaService - criaPauta: {}", id);
     }
 }

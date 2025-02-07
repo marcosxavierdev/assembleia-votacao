@@ -1,13 +1,17 @@
 package com.marcosxavier.assembleia.adapters.inbound.controllers;
 
+import com.marcosxavier.assembleia.adapters.outbound.databaseentities.Eleitor;
 import com.marcosxavier.assembleia.application.ports.in.api.EleitorAPI;
 import com.marcosxavier.assembleia.application.ports.in.usecases.EleitorUsecase;
+import com.marcosxavier.assembleia.domain.dto.eleitor.CustomEleitorCollectionDTO;
 import com.marcosxavier.assembleia.domain.dto.eleitor.EleitorRequestDTO;
 import com.marcosxavier.assembleia.domain.dto.eleitor.EleitorResponseDTO;
 import com.marcosxavier.assembleia.domain.dto.eleitor.EleitorUpdateDTO;
+import com.marcosxavier.assembleia.utils.assemblers.EleitorAssembler;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,46 +22,54 @@ import java.util.List;
 public class EleitorRestController implements EleitorAPI {
 
     private final EleitorUsecase service;
+    private final EleitorAssembler assembler;
 
     @Override
     public EleitorResponseDTO buscaPorId(String id) {
         log.info("EleitorRestController - buscando id: {}",id);
-        return service.buscaPorId(id);
+        var eleitor = service.buscaPorId(id);
+        return assembler.toModelBuscaPorId(eleitor);
     }
 
     @Override
     public EleitorResponseDTO buscaPorCpf(String cpf) {
         log.info("EleitorRestController - buscando cpf: {}",cpf);
-        return service.buscaPorCpf(cpf);
+        var eleitor = service.buscaPorCpf(cpf);
+        return assembler.toModelBuscaPorCpf(eleitor);
     }
 
     @Override
     public EleitorResponseDTO criaEleitor(@Valid EleitorRequestDTO request) {
         log.info("EleitorRestController - criando eleitor");
-        return service.criaEleitor(request);
+        var eleitor =  service.criaEleitor(request);
+        return assembler.toModelCriaEleitor(eleitor);
     }
 
     @Override
     public EleitorResponseDTO atualizaEleitor(@Valid EleitorUpdateDTO update) {
         log.info("EleitorRestController - atualizando eleitor");
-        return service.atualizaEleitor(update);
+        var eleitor =   service.atualizaEleitor(update);
+        return assembler.toModelAtualizaEleitor(eleitor);
     }
 
     @Override
-    public List<EleitorResponseDTO> buscaTodosEleitores() {
+    public CustomEleitorCollectionDTO<EleitorResponseDTO> buscaTodosEleitores() {
         log.info("EleitorRestController - listando eleitores");
-        return service.buscaTodosEleitores();
+        List<Eleitor> eleitores = service.buscaTodosEleitores();
+        return assembler.toCollectionModel(eleitores);
     }
 
     @Override
-    public void deletaEleitor(String id) {
+    public ResponseEntity<Void> deletaEleitor(String id) {
         log.info("EleitorRestController - deletando um eleitor: {}",id);
         service.deletaEleitor(id);
+        return ResponseEntity.noContent().build();
     }
 
     @Override
-    public void zeraCollectionEleitor() {
+    public ResponseEntity<Void> zeraCollectionEleitor() {
         log.info("EleitorRestController - zerando a collection de eleitor");
         service.zeraCollectionEleitor();
+        return ResponseEntity.noContent().build();
     }
 }
