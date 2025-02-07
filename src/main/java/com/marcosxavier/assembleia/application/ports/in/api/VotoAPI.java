@@ -1,5 +1,6 @@
 package com.marcosxavier.assembleia.application.ports.in.api;
 
+import com.marcosxavier.assembleia.domain.dto.voto.CustomVotoCollectionDTO;
 import com.marcosxavier.assembleia.domain.dto.voto.VotoRequestDTO;
 import com.marcosxavier.assembleia.domain.dto.voto.VotoResponseDTO;
 import com.marcosxavier.assembleia.domain.dto.voto.VotoUpdateDTO;
@@ -9,9 +10,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public interface VotoAPI {
@@ -51,7 +51,7 @@ public interface VotoAPI {
             responses = {
                     @ApiResponse(responseCode = "200", description= "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = VotoResponseDTO.class))),
             })
-    List<VotoResponseDTO> buscaTodosVotos();
+    CustomVotoCollectionDTO<VotoResponseDTO> buscaTodosVotos();
 
     @DeleteMapping(value = "/public/v1/voto/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
@@ -60,7 +60,7 @@ public interface VotoAPI {
                     @ApiResponse(responseCode = "204", description= "NO CONTENT", content = @Content(mediaType = "application/json")),
                     @ApiResponse(responseCode = "404", description= "NOT FOUND", content = {@Content()})
             })
-    void deletaVoto (@PathVariable String id);
+    ResponseEntity<Void> deletaVoto (@PathVariable String id);
 
     @DeleteMapping(value = "/private/v1/voto")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
@@ -68,5 +68,5 @@ public interface VotoAPI {
             responses = {
                     @ApiResponse(responseCode = "204", description= "NO CONTENT", content = @Content(mediaType = "application/json")),
             })
-    void zeraCollectionVoto ();
+    ResponseEntity<Void> zeraCollectionVoto ();
 }

@@ -1,10 +1,10 @@
 package com.marcosxavier.assembleia.application.services;
 
-import com.marcosxavier.assembleia.adapters.outbound.databaseentities.EleitorMongodbEntity;
-import com.marcosxavier.assembleia.adapters.outbound.databaseentities.VotoMongodbEntity;
+import com.marcosxavier.assembleia.adapters.outbound.databaseentities.Eleitor;
+import com.marcosxavier.assembleia.adapters.outbound.databaseentities.Voto;
 import com.marcosxavier.assembleia.application.ports.in.usecases.EleitorUsecase;
 import com.marcosxavier.assembleia.application.ports.in.usecases.PautaUsecase;
-import com.marcosxavier.assembleia.adapters.outbound.databaseentities.PautaMongodbEntity;
+import com.marcosxavier.assembleia.adapters.outbound.databaseentities.Pauta;
 import com.marcosxavier.assembleia.application.ports.in.usecases.VotoUsecase;
 import com.marcosxavier.assembleia.utils.enums.PautaStatusEnum;
 import com.marcosxavier.assembleia.utils.mappers.VotoMapper;
@@ -29,49 +29,49 @@ public class VotoService implements VotoUsecase {
     private final EleitorUsecase eleitorUsecase;
     private final PautaUsecase pautaUsecase;
 
-    public VotoMongodbEntity buscaVotoPorId(String id) {
+    public Voto buscaVotoPorId(String id) {
         log.info("VotoService - buscaVotoPorId: {}", id);
-        return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "VotoMongodbEntity não encontrado!"));
+        return repository.buscaPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Voto não encontrado!"));
     }
 
     @Override
-    public VotoResponseDTO buscaPorId(String id) {
+    public Voto buscaPorId(String id) {
         log.info("[iniciando]VotoService - buscaPorId: {}", id);
         var voto = buscaVotoPorId(id);
         log.info("[finalizando]VotoService - buscaPorId: {}", id);
-        return VotoMapper.INSTANCE.toVotoResponseDTO(voto);
+        return voto;
     }
 
     @Override
-    public VotoResponseDTO criaVoto(VotoRequestDTO request) {
+    public Voto criaVoto(VotoRequestDTO request) {
         log.info("[iniciando]VotoService - criaVoto");
         validaVoto(request.getIdPauta(), request.getIdEleitor());
-        var voto = new VotoMongodbEntity(request);
+        var voto = new Voto(request);
         repository.salva(voto);
         log.info("[finalizando]VotoService - criaVoto");
-        return new VotoResponseDTO(voto);
+        return voto;
     }
 
     @Override
-    public VotoResponseDTO atualizaVoto(VotoUpdateDTO update) {
+    public Voto atualizaVoto(VotoUpdateDTO update) {
         log.info("[iniciando]VotoService - atualizaVoto");
-        VotoMongodbEntity votoMongodbEntity = buscaVotoPorId(update.getId());
+        Voto voto = buscaVotoPorId(update.getId());
         if (update.getIdPauta() != null) {
-            votoMongodbEntity.setIdPauta(update.getIdPauta());
+            voto.setIdPauta(update.getIdPauta());
         }
         if (update.getIdEleitor() != null) {
-            votoMongodbEntity.setIdEleitor(update.getIdEleitor());
+            voto.setIdEleitor(update.getIdEleitor());
         }
         if (update.getAprovacao() != null) {
-            votoMongodbEntity.setAprovacao(update.getAprovacao());
+            voto.setAprovacao(update.getAprovacao());
         }
-        repository.salva(votoMongodbEntity);
+        repository.salva(voto);
         log.info("[finalizando]VotoService - atualizaVoto");
-        return new VotoResponseDTO(votoMongodbEntity);
+        return voto;
     }
 
     @Override
-    public List<VotoResponseDTO> buscaTodosVotos() {
+    public List<Voto> buscaTodosVotos() {
         log.info("VotoService - buscaTodosVotos");
         return repository.buscaLista();
     }
@@ -79,8 +79,8 @@ public class VotoService implements VotoUsecase {
     @Override
     public void deletaVoto(String id) {
         log.info("[iniciando]VotoService - deletaVoto: {}", id);
-        VotoMongodbEntity votoMongodbEntity = buscaVotoPorId(id);
-        repository.deleta(votoMongodbEntity);
+        Voto voto = buscaVotoPorId(id);
+        repository.deleta(voto);
         log.info("[finalizando]VotoService - deletaVoto: {}", id);
     }
 
@@ -91,7 +91,7 @@ public class VotoService implements VotoUsecase {
         log.info("[finalizando]VotoService - zeraCollectionVoto");
     }
 
-    public List<VotoMongodbEntity> buscaTodasVotosPorIdPautaEIdEleitor(String  idPauta, String idEleitor) {
+    public List<Voto> buscaTodasVotosPorIdPautaEIdEleitor(String  idPauta, String idEleitor) {
         log.info("VotoService - buscaTodasVotosPorIdPautaEIdEleitor: {} e {}", idPauta, idEleitor);
         return repository.buscaTodasVotosPorIdPautaEIdEleitor(idPauta, idEleitor);
     }
@@ -99,15 +99,15 @@ public class VotoService implements VotoUsecase {
     private void validaVoto(String  idPauta, String idEleitor) {
         log.info("[iniciando]VotoService - validaVoto: {} e {}", idPauta, idEleitor);
 
-        PautaMongodbEntity pautaMongodbEntity = pautaUsecase.buscaPautaPorId(idPauta);
-        EleitorMongodbEntity eleitorMongodbEntity = eleitorUsecase.buscaEleitorPorId(idEleitor);
+        Pauta pauta = pautaUsecase.buscaPautaPorId(idPauta);
+        Eleitor eleitor = eleitorUsecase.buscaEleitorPorId(idEleitor);
         log.info("[finalizando]VotoService - validaVoto");
         if (!repository.buscaTodasVotosPorIdPautaEIdEleitor(idPauta, idEleitor).isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "VotoMongodbEntity deste eleitorMongodbEntity já registrado nesta pautaMongodbEntity");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Voto deste eleitor já registrado nesta pauta");
         }
 
-        if (pautaMongodbEntity.getStatus().equals(PautaStatusEnum.CLOSED)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "PautaMongodbEntity já encerrada, não aceitamos mais votos");
+        if (pauta.getStatus().equals(PautaStatusEnum.CLOSED)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Pauta já encerrada, não aceitamos mais votos");
         }
     }
 }

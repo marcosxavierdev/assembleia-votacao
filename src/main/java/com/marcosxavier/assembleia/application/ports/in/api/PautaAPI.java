@@ -1,5 +1,6 @@
 package com.marcosxavier.assembleia.application.ports.in.api;
 
+import com.marcosxavier.assembleia.domain.dto.pauta.CustomPautaCollectionDTO;
 import com.marcosxavier.assembleia.domain.dto.pauta.PautaRequestDTO;
 import com.marcosxavier.assembleia.domain.dto.pauta.PautaResponseDTO;
 import com.marcosxavier.assembleia.domain.dto.pauta.PautaUpdateDTO;
@@ -9,9 +10,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public interface PautaAPI {
@@ -51,7 +51,7 @@ public interface PautaAPI {
             responses = {
                     @ApiResponse(responseCode = "200", description= "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PautaResponseDTO.class))),
             })
-    List<PautaResponseDTO> buscaTodasPautas();
+    CustomPautaCollectionDTO<PautaResponseDTO> buscaTodasPautas();
 
     @DeleteMapping(value = "/public/v1/pauta/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
@@ -60,7 +60,7 @@ public interface PautaAPI {
                     @ApiResponse(responseCode = "204", description= "NO CONTENT", content = @Content(mediaType = "application/json")),
                     @ApiResponse(responseCode = "404", description= "NOT FOUND", content = {@Content()})
             })
-    void deletaPauta (@PathVariable String id);
+    ResponseEntity<Void> deletaPauta (@PathVariable String id);
 
     @DeleteMapping(value = "/private/v1/pauta")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
@@ -68,7 +68,7 @@ public interface PautaAPI {
             responses = {
                     @ApiResponse(responseCode = "204", description= "NO CONTENT", content = @Content(mediaType = "application/json")),
             })
-    void zeraCollectionPauta ();
+    ResponseEntity<Void> zeraCollectionPauta ();
 
     @PostMapping(value = "/public/v1/pauta/{id}/encerrar")
     @ResponseStatus(code = HttpStatus.OK)

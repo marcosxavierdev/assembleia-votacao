@@ -1,14 +1,14 @@
 package com.marcosxavier.assembleia.application.ports.out.persistenceMongodb;
 
-import com.marcosxavier.assembleia.adapters.outbound.databaseentities.EleitorMongodbEntity;
+import com.marcosxavier.assembleia.adapters.outbound.databaseentities.Eleitor;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface EleitorMongoDBRepository extends MongoRepository<EleitorMongodbEntity, String> {
+public interface EleitorMongoDBRepository extends MongoRepository<Eleitor, String> {
 
-    Optional<EleitorMongodbEntity> findById(String uuid);
-    Optional<EleitorMongodbEntity> findByCpf(String cpf);
+    Optional<Eleitor> findById(String uuid);
+    Optional<Eleitor> findByCpf(String cpf);
 }

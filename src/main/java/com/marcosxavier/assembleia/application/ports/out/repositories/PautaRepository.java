@@ -1,16 +1,15 @@
 package com.marcosxavier.assembleia.application.ports.out.repositories;
 
-import com.marcosxavier.assembleia.adapters.outbound.databaseentities.PautaMongodbEntity;
-import com.marcosxavier.assembleia.domain.dto.pauta.PautaResponseDTO;
+import com.marcosxavier.assembleia.adapters.outbound.databaseentities.Pauta;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface PautaRepository {
 
-    Optional<PautaMongodbEntity> buscaPorId(String id);
-    List<PautaResponseDTO> buscaLista();
-    void deleta(PautaMongodbEntity pautaMongodbEntity);
-    void salva(PautaMongodbEntity pautaMongodbEntity);
+    Optional<Pauta> buscaPorId(String id);
+    List<Pauta> buscaLista();
+    void deleta(Pauta pauta);
+    void salva(Pauta pauta);
     void zeraCollectionPauta();
 }

@@ -4,9 +4,13 @@ import com.marcosxavier.assembleia.utils.enums.AprovacaoEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class VotoRequestDTO {
 
     @NotEmpty(message = "O campo idPauta não pode ser nulo e nem vazio")
@@ -18,6 +22,6 @@ public class VotoRequestDTO {
     private String idEleitor;
 
     @NotNull
-    @Schema(name="aprovacao", description="Aprovacao do VotoMongodbEntity", example = "SIM ou NAO")
+    @Schema(name="aprovacao", description="Aprovacao do Voto", example = "SIM ou NAO")
     private AprovacaoEnum aprovacao;
 }
